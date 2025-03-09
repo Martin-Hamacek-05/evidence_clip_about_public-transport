@@ -119,6 +119,7 @@ PC s operačním systémem Windows 10 a novější
 - export dat z databáze
 - export tabulky do html souboru
 - vlastní SQL dotaz
+
 `*` -  vzhledem k bezpečnosti nedoporučuji používat FTP serveru - používejte pouze pokud chcete využít web. app. 
 
 ## Kontakt
