@@ -3,8 +3,6 @@
 > **autor:** Martin Hamacek
 > 
 > **datum:** 9. 3. 2025
-> 
-> **aktuální verze:** verze 1.0
 
 Desktop aplikace, která slouží k evidenci záběru dopravních prostředků MHD
 variace produktu [webová aplikace v PHP](spsejecna.cz)
