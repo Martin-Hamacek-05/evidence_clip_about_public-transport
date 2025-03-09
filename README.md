@@ -15,6 +15,7 @@ variace produktu [webová aplikace v PHP](spsejecna.cz)
 
 ### schéma config souborů
 database.config
+
 `<?xml version="1.0" encoding="utf-8" ?>`
 
 `<configuration>`
