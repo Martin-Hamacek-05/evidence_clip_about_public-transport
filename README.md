@@ -115,7 +115,6 @@ PC s operačním systémem Windows 10 a novější
 - seřazení dat v tabulce podle jednoho vybraného sloupce
 - správa uživatelů
 - filtrování souboru
-- import dat do tabulek zastávka, linka
 - import dat do dalších tabulek
 - export dat z databáze
 - export tabulky do html souboru
