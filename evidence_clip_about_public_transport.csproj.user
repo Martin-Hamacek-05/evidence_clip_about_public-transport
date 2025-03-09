@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Win_forms_user_interface\for_author\Edit_Author.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_author\Show_author.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_clip\Show_clips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_clip\Edit_clip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_formats\Edit_format.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_formats\Show_formats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_lines\Edit_line.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_lines\Show_lines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_mean_of_transport\Edit_mean_of_transport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_mean_of_transport\Show_mean_of_transport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_owner\Edit_owner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_owner\Show_owner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_pattern\Edit_pattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_pattern\Show_pattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_pattern_on_vehicle\Edit_pattern_on_vehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_producer\Edit_producer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_producer\Show_producer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_stops\Edit_stop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_stops\Mass_rename_stop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_stops\Show_stops.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_subtype_mean_of_transport\Edit_subtype_mean_of_transport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_subtype_mean_of_transport\Show_subtype_mean_of_transport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_vehicles_on_clip\Edit_vehicles_on_clip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_vehicle\Edit_vehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\for_vehicle\Show_vehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\ftp_manager\Ftp_manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\About_software.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Backup_import.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Database_set_connection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Load_window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Login_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Signpost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\SQLQuerry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Styles_for_html.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
