@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.1.0" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
     <PackageReference Include="ScottPlot.WinForms" Version="5.0.47" />
   </ItemGroup>
 

@@ -81,7 +81,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         }
         private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
         {
-            evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format_with_chart(data_from_select, "name_of_statistic.SelectedItem" + " za rok " + years_combobox.SelectedItem, FormsPlot1);
+            evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format_with_chart(data_from_select, Other_features.name_of_statistics(statistic_id) + " za rok " + years_combobox.SelectedItem, FormsPlot1);
         }
 
         private void search_with_label_Click(object sender, EventArgs e)

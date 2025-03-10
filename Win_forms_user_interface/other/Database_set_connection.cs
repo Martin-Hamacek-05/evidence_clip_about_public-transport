@@ -31,12 +31,14 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 XmlNodeList login_name = xmlDoc.GetElementsByTagName("user_name");
                 XmlNodeList passwordd = xmlDoc.GetElementsByTagName("password");
                 XmlNodeList portt = xmlDoc.GetElementsByTagName("port");
+                XmlNodeList otherr = xmlDoc.GetElementsByTagName("other");
 
                 server.Text = addresss[0].InnerText;
                 database.Text = databasse[0].InnerText;
                 user_name.Text = login_name[0].InnerText;
                 password.Text = passwordd[0].InnerText;
                 port.Text = portt[0].InnerText;
+                other.Text = otherr[0].InnerText;
             }
             catch (FileNotFoundException)
             {

@@ -55,7 +55,7 @@
             about_software_label.Name = "about_software_label";
             about_software_label.Size = new Size(296, 100);
             about_software_label.TabIndex = 1;
-            about_software_label.Text = "program na evidenci záběrů o MHD\r\nverze 2.0\r\nautor: Martin Hamacek\r\n2025";
+            about_software_label.Text = "program na evidenci záběrů o MHD\r\nverze 1.0\r\nautor: Martin Hamacek\r\n2025";
             // 
             // close_button
             // 

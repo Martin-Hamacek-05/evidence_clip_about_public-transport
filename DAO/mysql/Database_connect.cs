@@ -31,9 +31,10 @@ namespace evidence_clip_about_public_transport.Database_connection
                 XmlNodeList port = xmlDoc.GetElementsByTagName("port");
                 XmlNodeList databaze = xmlDoc.GetElementsByTagName("database");
                 XmlNodeList uzivjm = xmlDoc.GetElementsByTagName("user_name");
-                XmlNodeList heslo = xmlDoc.GetElementsByTagName("password"); 
+                XmlNodeList heslo = xmlDoc.GetElementsByTagName("password");
+                XmlNodeList otherr = xmlDoc.GetElementsByTagName("other");
 
-                return "server=" + addresss[0].InnerText + ";database=" + databaze[0].InnerText + ";port=" + port[0].InnerText + ";uid=" + uzivjm[0].InnerText + ";pwd=" + heslo[0].InnerText + ";";
+                return "server=" + addresss[0].InnerText + ";database=" + databaze[0].InnerText + ";port=" + port[0].InnerText + ";uid=" + uzivjm[0].InnerText + ";pwd=" + heslo[0].InnerText + ";" + otherr[0].InnerText;
             }
             catch(FileNotFoundException exc) 
             {

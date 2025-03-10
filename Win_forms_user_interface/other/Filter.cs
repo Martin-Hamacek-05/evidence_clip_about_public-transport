@@ -138,7 +138,15 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         }
         private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
         {
-            evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text);
+            try
+            {
+                data_from_select.Columns[4].Visible = false;
+                evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text,3);
+            }
+            catch (Exception exc) 
+            { 
+            
+            }
         }
         private void search_button_Click(object sender, EventArgs e)
         {
