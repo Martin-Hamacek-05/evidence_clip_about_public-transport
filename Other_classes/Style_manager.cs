@@ -49,7 +49,6 @@ namespace evidence_clip_about_public_transport.Other_classes
                 {
                     color_of_row.Add(xml_parse[i].Attributes[1].Value);
                 }
-            
             }
             catch(FileNotFoundException exc) 
             {
@@ -71,7 +70,7 @@ namespace evidence_clip_about_public_transport.Other_classes
         /// <param name="size_of_border"></param>
         /// <param name="color_of_border"></param>
         /// <param name="enable_odd_rows"></param>
-        public static void save_style(List<string> list_of_loaded_font, List<int> list_of_sizes_of_font, List<string> list_of_colours_of_font, List<string> list_of_loaded_colours_of_rows,string color_of_background,int size_of_border,string color_of_border,bool enable_odd_rows) 
+        public static void save_style(List<string> list_of_loaded_font, List<int> list_of_sizes_of_font, List<string> list_of_colours_of_font, List<string> list_of_loaded_colours_of_rows,string color_of_background,int size_of_border,string color_of_border,bool enable_odd_rows,int page_type,int orientation,decimal width,decimal height,int units) 
         {
             string[] levels_of_fonts = { "normal","header","odd","even","header_of_table"};
             try
@@ -105,8 +104,9 @@ namespace evidence_clip_about_public_transport.Other_classes
                         writer.WriteLine("<enable_odd_rows set=" + blockquote + "false" + blockquote + " />");
                     }
 
-                    writer.WriteLine("</style>");
 
+                    writer.WriteLine("<pagestyle size="+blockquote+ page_type+blockquote+" orientation="+blockquote+orientation+blockquote+" width=" + blockquote + width + blockquote + " height=" + blockquote + height + blockquote + " units=" + blockquote + units + blockquote + "/>");
+                    writer.WriteLine("</style>");
                 }
             }
             catch (Exception e) 

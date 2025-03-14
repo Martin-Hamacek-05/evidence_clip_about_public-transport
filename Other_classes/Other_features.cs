@@ -9,8 +9,10 @@ using evidence_clip_about_public_transport.Win_forms_user_interface.for_subtype_
 using evidence_clip_about_public_transport.Win_forms_user_interface.for_vehicle;
 using evidence_clip_about_public_transport.Win_forms_user_interface.ftp_manager;
 using evidence_clip_about_public_transport.Win_forms_user_interface.other;
+using ScottPlot.Finance;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +29,7 @@ namespace evidence_clip_about_public_transport.Other_classes
         /// </summary>
         /// <param name="id"></param>
         /// <returns>selected procedure</returns>
-        public static string procedure_convertor(int id) 
+        public static string procedure_convertor(int id)
         {
             List<string> list = new List<string>();
             list.Add("recalculation_clips_on_days");
@@ -38,7 +40,7 @@ namespace evidence_clip_about_public_transport.Other_classes
             list.Add("recalculation_on_subtype_mean_of_transport_from_clip");
             list.Add("recalculation_lines_on_stop_from_clip");
             list.Add("recalculation_subtypes_mean_of_transport_on_lines_from_clip");
-            
+
             return list[id];
         }
         /// <summary>
@@ -49,27 +51,46 @@ namespace evidence_clip_about_public_transport.Other_classes
         public static TreeNode[] list_of_statistics()
         {
             TreeNode[] list = new TreeNode[8];
-            for(int i = 0; i < list.Length; i++) 
+            for (int i = 0; i < list.Length; i++)
             {
-                list[i] = new TreeNode(name_of_statistics(i),4,4);
+                list[i] = new TreeNode(name_of_statistics(i), 4, 4);
             }
             return list;
         }
 
         public static string name_of_statistics(int index)
         {
-            string[] names = {"přepočet záběrů na dny (I)", "přepočet záběrů na měsíc (I)", "přepočet záběrů na jednotlivé linky (I)", "přepočet záběrů na jednotlivé zastávky (I)", "přepočet dnů na zastávky (I)", "přepočet záběrů na podtyp dopravních prostředků (II)", "přepočet linek na zastávku na základě klipů (II)", "přepočet linek na podtyp dopravních prostředků (III)" };
+            string[] names = { "přepočet záběrů na dny (I)", "přepočet záběrů na měsíc (I)", "přepočet záběrů na jednotlivé linky (I)", "přepočet záběrů na jednotlivé zastávky (I)", "přepočet dnů na zastávky (I)", "přepočet záběrů na podtyp dopravních prostředků (II)", "přepočet linek na zastávku na základě klipů (II)", "přepočet linek na podtyp dopravních prostředků (III)" };
             return names[index];
         }
 
-        public static Statistics[] load_statistics() 
-        { 
+        public static Statistics[] load_statistics()
+        {
             List<Statistics> list = new List<Statistics>();
-            for (int i = 0; i < list_of_statistics().Length; i++) 
+            for (int i = 0; i < list_of_statistics().Length; i++)
             {
                 list.Add(new Statistics(i));
             }
             return list.ToArray();
+        }
+
+        public static List<string[]> datagridview_convert(DataGridView data) 
+        {
+            string[]array = new string[data.ColumnCount];
+            List<string[]> list = new List<string[]>();
+            foreach (DataGridViewRow row in data.Rows)
+            {
+                for (int i = 0; i < data.ColumnCount; i++)
+                {
+                    if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
+                    {
+                        array[i] = row.Cells[i].Value?.ToString();
+                    }
+                }   
+                list.Add(array);
+                Array.Clear(array);
+            }
+            return list;
         }
 
         public static Form load_tree_view(int a, int b)
@@ -181,11 +202,11 @@ namespace evidence_clip_about_public_transport.Other_classes
 
         public static string[] set_header_in_czech(int index)
         {
-            List < string[]>headers_in_czech = new List <string[]>();
-            string[] recalculation_clips_on_days_or_month = { "vytvořeno","počet"};
+            List<string[]> headers_in_czech = new List<string[]>();
+            string[] recalculation_clips_on_days_or_month = { "vytvořeno", "počet" };
             string[] recalculation_clip_on_lines_or_stops_or_days_on_stop = { "název zastávky", "počet" };
             string[] recalculation_on_subtype_mean_of_transport_from_clip = { "dopravní prostředek", "podtyp", "počet" };
-            string[] recalculation_on_subtypes_mean_of_transport_on_lines_from_clip = { "dopraavní prostředek", "podtyp","název linky","počet" };
+            string[] recalculation_on_subtypes_mean_of_transport_on_lines_from_clip = { "dopraavní prostředek", "podtyp", "název linky", "počet" };
             string[] recalculation_lines_on_stop_from_clip = { "název zastávky", "linka", "počet" };
 
             headers_in_czech.Add(recalculation_clips_on_days_or_month);
@@ -194,12 +215,12 @@ namespace evidence_clip_about_public_transport.Other_classes
             headers_in_czech.Add(recalculation_on_subtypes_mean_of_transport_on_lines_from_clip);
             headers_in_czech.Add(recalculation_lines_on_stop_from_clip);
 
-            switch (index) 
-            { 
+            switch (index)
+            {
                 case 0:
                     return headers_in_czech[0];
-                break;
-                    
+                    break;
+
                 case 1:
                     return headers_in_czech[0];
                     break;
@@ -226,18 +247,17 @@ namespace evidence_clip_about_public_transport.Other_classes
                     break;
                 default:
                     return headers_in_czech[0];
-                break;
+                    break;
             }
 
-            
+
         }
 
-        public static string color_() 
+        public static string color_()
         {
             ColorDialog dialog = new ColorDialog();
             dialog.ShowDialog();
             return (dialog.Color.ToArgb() & 0x00FFFFFF).ToString("X6");
         }
-    
-}
+    }
 }

@@ -85,12 +85,12 @@ namespace evidence_clip_about_public_transport.Entits
             }
 
 
-            return new Author(Int32.Parse(splited[0]), splited[1], boolean_from_strring, splited[3], splited[4], DateOnly.ParseExact(splited[5], "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), Int32.Parse(splited[6]), splited[7]);
+            return new Author(Int32.Parse(splited[0]), splited[1], boolean_from_strring, splited[3], splited[4], DateOnly.ParseExact(splited[5], "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture), Int32.Parse(splited[6]), splited[7]);
         }
 
         public string to_csv() 
         {
-            return id + ";" + login_name + ";" + is_admin + ";" + message + ";" + email + ";" + date_create.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + ";" + count_of_access + ";" + user_password;
+            return id + ";" + login_name + ";" + is_admin + ";" + message + ";" + email + ";" + date_create.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) + ";" + count_of_access + ";" + user_password;
         }
     }
 

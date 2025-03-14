@@ -30,7 +30,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         private static I_Other_database_features other_Database_Features = Database_server_switch.other_Database_Features();
         private List<CheckedListBox> all_parameters = other_Database_Features.parameters_for_filter();
 
-        private string[] headers_in_czech = { "název klipu", "vytvořeno", "číslo natáčecího dne","", "příjezd / odjezd", "název linky", "název zastávky", "nástupiště", "směr", "evidenční čísla vozidel", "podtyp", "dopravní prostředek", "výrobce", "dopravce", "formát" };
+        private string[] headers_in_czech = { "název klipu", "vytvořeno", "číslo natáčecího dne","file_url", "příjezd / odjezd", "název linky", "název zastávky", "nástupiště", "směr", "evidenční čísla vozidel", "podtyp", "dopravní prostředek", "výrobce", "dopravce", "formát" };
 
         private bool search_by_number_ = false;
         public Filter()
@@ -140,8 +140,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         {
             try
             {
-                data_from_select.Columns[4].Visible = false;
-                evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text,3);
+                //data_from_select.Columns[4].Visible = false;
+                evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text, "file_url");
             }
             catch (Exception exc) 
             { 

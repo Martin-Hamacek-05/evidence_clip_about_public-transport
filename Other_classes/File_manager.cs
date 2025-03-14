@@ -20,7 +20,7 @@ namespace evidence_clip_about_public_transport.Other_classes
     public class File_manager
     {
 
-        private static string filter = "hypetext markup language *.html|*.html";
+        private static string filter = "hypetext markup language *.html|*.html|pdf soubor *.pdf|*.pdf";
         /// <summary>
         /// Writer csv string to file
         /// </summary>
@@ -57,11 +57,11 @@ namespace evidence_clip_about_public_transport.Other_classes
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Export_switch export_Switch = new Export_switch();
-                MessageBox.Show(export_Switch.selected_type_of_file(saveFileDialog.FilterIndex).export_file(data, Path.GetFullPath(saveFileDialog.FileName), header,-1));
+                MessageBox.Show(export_Switch.selected_type_of_file(saveFileDialog.FilterIndex).export_file(data, Path.GetFullPath(saveFileDialog.FileName), header,""));
             }
         }
 
-        public static void export_data_to_other_format(DataGridView data, string header, params int[] hide_columns)
+        public static void export_data_to_other_format(DataGridView data, string header, params string[] hide_columns)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = filter;
@@ -87,7 +87,7 @@ namespace evidence_clip_about_public_transport.Other_classes
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Export_switch export_Switch = new Export_switch();
-                MessageBox.Show(export_Switch.selected_type_of_file(saveFileDialog.FilterIndex).export_file_chart(data, Path.GetFullPath(saveFileDialog.FileName), header, chart,-1));
+                MessageBox.Show(export_Switch.selected_type_of_file(saveFileDialog.FilterIndex).export_file_chart(data, Path.GetFullPath(saveFileDialog.FileName), header, chart,""));
             }
         }
     }

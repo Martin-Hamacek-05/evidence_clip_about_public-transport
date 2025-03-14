@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.Author
             count_of_access.Enabled = false;
             is_admin.Enabled = false;
             message.Enabled = true;
+
+            for (int i = 0; i < Regex.Matches(message.Text, @"\a").Count; i++)
+            {
+                Console.Beep();
+            }
         }
 
         public void set_author_for_edit(evidence_clip_about_public_transport.Entits.Author author) 
@@ -54,6 +60,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.Author
             create_button.Enabled = false;
             reset_count_of_access_button.Enabled = true;
             message.Enabled = true;
+
+            for (int i = 0; i < Regex.Matches(message.Text, @"\a").Count; i++)
+            {
+                Console.Beep();
+            }
         }
 
         public Edit_Author()
@@ -63,6 +74,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.Author
             delete_button.Enabled = false;
             update_button.Enabled = false;
             create_button.Enabled = true;
+
+            
         }
 
         private void delete_button_Click(object sender, EventArgs e)
@@ -88,6 +101,17 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.Author
             update_author.update_author(new Entits.Author(Int32.Parse(id_label.Text), name_.Text, is_admin.Checked, message.Text, email_.Text, DateOnly.FromDateTime(date_created.Value), Convert.ToInt32(count_of_access.Value), password_.Text));
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.G))
+            {
+                message.Paste("\a");
+                Console.Beep();
+
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void cancel_button_Click(object sender, EventArgs e)
         {
             this.Close();

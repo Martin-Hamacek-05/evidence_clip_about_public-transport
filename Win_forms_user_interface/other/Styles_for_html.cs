@@ -48,6 +48,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
                 XmlNodeList xml_parse;
 
+
                 xml_parse = xmlDoc.GetElementsByTagName("background");
                 colour_of_background.Text = xml_parse[0].Attributes[0].Value;
 
@@ -64,12 +65,25 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 {
                     differentiate_even_rows.Checked = true;
                 }
+
+                xml_parse = xmlDoc.GetElementsByTagName("pagestyle");
+
+                fill_formats_of_paper();
+
+                page_size.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[0].InnerText);
+
+                page_orientation.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[1].InnerText);
+
+                width_page.Value = Decimal.Parse(xml_parse[0].Attributes[2].InnerText);
+
+                height_page.Value = Decimal.Parse(xml_parse[0].Attributes[3].InnerText);
+
+                units.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[4].InnerText);
             }
-            catch (FileNotFoundException fnf) 
+            catch (FileNotFoundException fnf)
             {
                 MessageBox.Show("Soubor styles.xml nebyl nalezen");
             }
-
         }
 
         private void set_colour_Click(object sender, EventArgs e)
@@ -89,7 +103,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
         private void save_Click(object sender, EventArgs e)
         {
-            Style_manager.save_style(list_of_loaded_font, list_of_loaded_sizes_of_font, list_of_loaded_colours_of_font, list_of_loaded_colours_of_rows, colour_of_background.Text, (int)border_of_cell.Value, colour_of_border.Text, differentiate_even_rows.Checked);
+            Style_manager.save_style(list_of_loaded_font, list_of_loaded_sizes_of_font, list_of_loaded_colours_of_font, list_of_loaded_colours_of_rows, colour_of_background.Text, (int)border_of_cell.Value, colour_of_border.Text, differentiate_even_rows.Checked,page_size.SelectedIndex,page_orientation.SelectedIndex,width_page.Value,height_page.Value,units.SelectedIndex);
             MessageBox.Show("Uloženo");
         }
 
@@ -101,7 +115,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 colour_of_text.Text = list_of_loaded_colours_of_font[levels_of_text.SelectedIndex];
                 size_of_font.Value = list_of_loaded_sizes_of_font[levels_of_text.SelectedIndex];
             }
-            catch (ArgumentOutOfRangeException ex) 
+            catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("Zkontrolujte správnost dat v souboru styles.xml");
             }
@@ -114,7 +128,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
         private void colour_of_text_TextChanged(object sender, EventArgs e)
         {
-            
             list_of_loaded_colours_of_font[levels_of_text.SelectedIndex] = colour_of_text.Text;
         }
 
@@ -129,7 +142,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
             {
                 colour_of_row.Text = list_of_loaded_colours_of_rows[type_of_row.SelectedIndex];
             }
-            catch (ArgumentOutOfRangeException ex) 
+            catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("Zkontrolujte správnost dat v souboru styles.xml");
             }
@@ -137,19 +150,61 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
         private void colour_of_row_TextChanged(object sender, EventArgs e)
         {
-            try 
+            try
             {
-            list_of_loaded_colours_of_rows[type_of_row.SelectedIndex] = colour_of_row.Text;
+                list_of_loaded_colours_of_rows[type_of_row.SelectedIndex] = colour_of_row.Text;
             }
-            catch (ArgumentOutOfRangeException ex) 
+            catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("Zkontrolujte správnost dat v souboru styles.xml");
             }
-}
+        }
 
         private void set_colour_for_border_Click(object sender, EventArgs e)
         {
             colour_of_border.Text = Other_features.color_();
         }
+
+        private void fill_formats_of_paper()
+        {
+            string[] other = { "letter", "legal", "ledger", "P11x17", "vlastní" };
+
+            for (int i = 0; i < 7; i++)
+            {
+                page_size.Items.Add("A" + i);
+            }
+
+            for (int i = 0; i < other.Length; i++)
+            {
+                page_size.Items.Add(other[i]);
+            }
+
+        }
+
+        private void page_size_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (page_size.SelectedIndex == 11)
+            {
+                width_label.Visible = true;
+                height_label.Visible = true;
+                width_page.Visible = true;
+                height_page.Visible = true;
+                orientation_label.Visible = false;
+                page_orientation.Visible = false;
+                units.Visible = true;
+            }
+            else 
+            {
+                width_label.Visible = false;
+                height_label.Visible = false;
+                width_page.Visible = false;
+                height_page.Visible = false;
+                orientation_label.Visible = true;
+                page_orientation.Visible = true;
+                units.Visible = false;
+            }
+        }
+
+        
     }
 }

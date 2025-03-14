@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using evidence_clip_about_public_transport.exceptions;
 
 namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 {
@@ -77,6 +78,11 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 
 
             }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
+                return null;
+            }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.ToString());
@@ -109,6 +115,11 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 
 
             }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
+                return null;
+            }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.ToString());
@@ -127,13 +138,17 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
                 cmd.Parameters.AddWithValue("@is_admin", author.Is_admin);
                 cmd.Parameters.AddWithValue("@message", author.Message);
                 cmd.Parameters.AddWithValue("@email", author.Email);
-                cmd.Parameters.AddWithValue("@date_created", author.Date_create);
+                cmd.Parameters.AddWithValue("@date_created", author.Date_create.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@count_of_access", author.Count_of_access);
                 cmd.Parameters.AddWithValue("@user_password", author.User_password);
 
                 cmd.ExecuteNonQuery();
                 connection.Close();
-
+                MessageBox.Show("Vytvořeno");
+            }
+            catch (MySqlException exce) 
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
             }
             catch (Exception exc)
             {
@@ -153,13 +168,17 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
                 cmd.Parameters.AddWithValue("@is_admin", author.Is_admin);
                 cmd.Parameters.AddWithValue("@message", author.Message);
                 cmd.Parameters.AddWithValue("@email", author.Email);
-                cmd.Parameters.AddWithValue("@date_created", author.Date_create);
+                cmd.Parameters.AddWithValue("@date_created", author.Date_create.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@count_of_access", author.Count_of_access);
                 cmd.Parameters.AddWithValue("@user_password", author.User_password);
 
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 MessageBox.Show("Upraveno");
+            }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
             }
             catch (Exception exc)
             {
@@ -178,8 +197,10 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 
                 cmd.ExecuteNonQuery();
                 connection.Close();
-
-
+            }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
             }
             catch (Exception exc)
             {
@@ -204,6 +225,11 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 
                 }
                 connection.Close();
+                return distict_authors;
+            }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
                 return distict_authors;
             }
             catch (Exception exc)
@@ -236,6 +262,11 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_author
                 return backup;
 
 
+            }
+            catch (MySqlException exce)
+            {
+                Work_with_expection.sql_exception_of_code(exce.Number);
+                return null;
             }
             catch (Exception exc)
             {

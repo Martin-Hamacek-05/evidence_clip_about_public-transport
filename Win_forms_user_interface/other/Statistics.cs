@@ -29,8 +29,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
             list_To_Combobox.yers_to_combobox("select distinct year(created) as years from clip order by years desc", years_combobox);
         }
 
-        private List<CheckedListBox> all_parameters = Other_database_features.parameters_for_filter();
-
         private Chart_list chart_List = new Chart_list();
 
         private void new_record_Click(object sender, EventArgs e)

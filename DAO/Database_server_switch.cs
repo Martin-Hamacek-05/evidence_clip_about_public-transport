@@ -56,114 +56,224 @@ namespace evidence_clip_about_public_transport.DAO
 
         public static I_DAO_Formats dAO_Formats()
         {
-            List<I_DAO_Formats> dAO_Formats = new List<I_DAO_Formats>();
+            try
+            {
+                List<I_DAO_Formats> dAO_Formats = new List<I_DAO_Formats>();
             dAO_Formats.Add(new DAO_Formats_implement());
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Formats_implement();
+            }
+
         }
 
         public static I_DAO_Line dAO_Line()
         {
-            List<I_DAO_Line> dAO_Formats = new List<I_DAO_Line>();
+            try
+            {
+                List<I_DAO_Line> dAO_Formats = new List<I_DAO_Line>();
             dAO_Formats.Add(new DAO_Line_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Line_implement();
+            }
         }
 
         public static I_DAO_Mean_of_transport dAO_Mean_Of_Transport()
         {
+            try { 
             List<I_DAO_Mean_of_transport> dAO_Formats = new List<I_DAO_Mean_of_transport>();
             dAO_Formats.Add(new DAO_Mean_of_transport_implement()); 
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Mean_of_transport_implement();
+            }
         }
 
         public static I_DAO_Owner dAO_owner()
         {
-            List<I_DAO_Owner> dAO_Formats = new List<I_DAO_Owner>();
+            try
+            {
+                List<I_DAO_Owner> dAO_Formats = new List<I_DAO_Owner>();
             dAO_Formats.Add(new DAO_Owner_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Owner_implement();
+            }
         }
 
         public static I_DAO_Pattern dAO_pattern()
         {
-            List<I_DAO_Pattern> dAO_Formats = new List<I_DAO_Pattern>();
+            try
+            {
+                List<I_DAO_Pattern> dAO_Formats = new List<I_DAO_Pattern>();
             dAO_Formats.Add(new DAO_Pattern_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Pattern_implement();
+            }
         }
 
         public static I_DAO_Pattern_on_vehicle dAO_Pattern_On_Vehicle()
         {
+            try { 
             List<I_DAO_Pattern_on_vehicle> dAO_Formats = new List<I_DAO_Pattern_on_vehicle>();
             dAO_Formats.Add(new DAO_Pattern_on_vehicle_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Pattern_on_vehicle_implement();
+            }
         }
 
         public static I_DAO_Producer dAO_producer()
         {
-            List<I_DAO_Producer> dAO_Formats = new List<I_DAO_Producer>();
+            try
+            {
+                List<I_DAO_Producer> dAO_Formats = new List<I_DAO_Producer>();
             dAO_Formats.Add(new DAO_Producer_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Producer_implement();
+            }
         }
 
         public static I_DAO_Stop dAO_stop()
         {
-            List<I_DAO_Stop> dAO_Formats = new List<I_DAO_Stop>();
+            try
+            {
+                List<I_DAO_Stop> dAO_Formats = new List<I_DAO_Stop>();
             dAO_Formats.Add(new DAO_Stop_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Stop_implement();
+            }
         }
 
         public static I_DAO_Subtype_mean_of_transport dAO_Subtype_Mean_Of_Transport()
         {
-            List<I_DAO_Subtype_mean_of_transport> dAO_Formats = new List<I_DAO_Subtype_mean_of_transport>();
+            try
+            {
+                List<I_DAO_Subtype_mean_of_transport> dAO_Formats = new List<I_DAO_Subtype_mean_of_transport>();
             dAO_Formats.Add(new DAO_Subtype_mean_of_transport_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Subtype_mean_of_transport_implement();
+            }
         }
 
         public static I_DAO_Vehicle dAO_Vehicle()
         {
-            List<I_DAO_Vehicle> dAO_Formats = new List<I_DAO_Vehicle>();
+            try
+            {
+                List<I_DAO_Vehicle> dAO_Formats = new List<I_DAO_Vehicle>();
             dAO_Formats.Add(new DAO_Vehicle_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Vehicle_implement();
+            }
         }
 
         public static I_DAO_Vehicles_on_clip DAO_Vehicles_On_Clip()
         {
-            List<I_DAO_Vehicles_on_clip> dAO_Formats = new List<I_DAO_Vehicles_on_clip>();
+            try
+            {
+                List<I_DAO_Vehicles_on_clip> dAO_Formats = new List<I_DAO_Vehicles_on_clip>();
             dAO_Formats.Add(new DAO_Vehicles_on_clip_implements());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Vehicles_on_clip_implements();
+            }
         }
 
         public static I_DAO_Author DAO_Author()
         {
-            List<I_DAO_Author> dAO_Formats = new List<I_DAO_Author>();
+            try
+            {
+                List<I_DAO_Author> dAO_Formats = new List<I_DAO_Author>();
             dAO_Formats.Add(new DAO_Author_implement());
             
             return dAO_Formats[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new DAO_Author_implement();
+            }
         }
 
         public static I_List_to_combobox list_to_combobox()
         {
-
-            List<I_List_to_combobox> list_To_Combobox = new List<I_List_to_combobox>();
+            try
+            {
+                List<I_List_to_combobox> list_To_Combobox = new List<I_List_to_combobox>();
             list_To_Combobox.Add(new List_to_combobox());
             
 
             return list_To_Combobox[stave_from_file()];
+            }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new List_to_combobox();
+            }
         }
 
         public static I_Other_database_features other_Database_Features()
         {
-            List<I_Other_database_features> list_Other_Database_ = new List<I_Other_database_features>();
+            try
+            {
+                List<I_Other_database_features> list_Other_Database_ = new List<I_Other_database_features>();
             list_Other_Database_.Add(new Other_database_features());
             
             return list_Other_Database_[stave_from_file()];
+                }
+            catch (IndexOutOfRangeException exc)
+            {
+                MessageBox.Show("Došlo k přepnutí na MySQL databázi");
+                return new Other_database_features();
+            }
         }
     }
 }

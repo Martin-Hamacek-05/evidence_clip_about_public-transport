@@ -11,18 +11,14 @@ namespace evidence_clip_about_public_transport.File_export_mngr
 {
     public class Export_to_html : I_Export_file
     {
-        public string export_file(DataGridView data, string path, string header, params int[] hide_columns)
+        public string export_file(DataGridView data, string path, string header, params string[] hide_columns)
         {
             try
             {
-                
-
-
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load("styles.xml");
 
                 XmlNodeList xml_parse_fonts = xmlDoc.GetElementsByTagName("font");
-
                 XmlNodeList xml_parse_rows = xmlDoc.GetElementsByTagName("font");
                 XmlNodeList xml_parse_background = xmlDoc.GetElementsByTagName("background");
                 XmlNodeList xml_parse_border = xmlDoc.GetElementsByTagName("border");
@@ -36,9 +32,14 @@ namespace evidence_clip_about_public_transport.File_export_mngr
 
                 for (int i = 0; i < columnCount; i++)
                 {
+                    
                     if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
                     {
-                        between_data = between_data + "<th>" + data.Columns[i].HeaderText.ToString() + "</th>";
+                        if (!(data.Columns[i].HeaderText.ToString().Equals(hide_columns[0]))) 
+                        {
+                            between_data = between_data + "<th>" + data.Columns[i].HeaderText.ToString() + "</th>";
+                        }
+                            
                     }
 
                 }
@@ -60,7 +61,10 @@ namespace evidence_clip_about_public_transport.File_export_mngr
                     {
                         if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
                         {
-                            between_data_II = between_data_II + "<td>" + row.Cells[i].Value?.ToString() + "</td>";
+                            if (!(data.Columns[i].HeaderText.ToString().Equals(hide_columns[0])))
+                            {
+                                between_data_II = between_data_II + "<td>" + row.Cells[i].Value?.ToString() + "</td>";
+                            }
                         }
                     }
                     between_data_II = between_data_II + "</tr>\n";
@@ -111,17 +115,10 @@ namespace evidence_clip_about_public_transport.File_export_mngr
             }
         }
 
-        public string export_file_chart(DataGridView data, string path, string header, FormsPlot chart, params int[] hide_columns)
+        public string export_file_chart(DataGridView data, string path, string header, FormsPlot chart, params string[] hide_columns)
         {
             try
             {
-                if (hide_columns[0] != -1) 
-                {
-                    for (int i = 0; i < hide_columns.Length; i++) 
-                    {
-                        data.Columns[i].Visible = false;
-                    }   
-                }
 
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load("styles.xml");
@@ -146,8 +143,10 @@ namespace evidence_clip_about_public_transport.File_export_mngr
 
                 for (int i = 0; i < columnCount; i++)
                 {
-                    if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
+                    
+                    if (!(data.Columns[i].HeaderText.ToString().Equals("id")) || !(data.Columns[i].HeaderText.ToString().Equals("file_url")))
                     {
+                        
                         between_data = between_data + "<th>" + data.Columns[i].HeaderText.ToString() + "</th>";
                     }
 
@@ -168,7 +167,7 @@ namespace evidence_clip_about_public_transport.File_export_mngr
 
                     for (int i = 0; i < data.Columns.Count; i++)
                     {
-                        if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
+                        if (!(data.Columns[i].HeaderText.ToString().Equals("id")) || !(data.Columns[i].HeaderText.ToString().Equals(hide_columns[0])))
                         {
                             between_data_II = between_data_II + "<td>" + row.Cells[i].Value?.ToString() + "</td>";
                         }
