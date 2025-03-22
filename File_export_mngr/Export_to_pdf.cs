@@ -15,6 +15,7 @@ using MigraDoc.Rendering;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using PdfSharp.Drawing;
+using MigraDoc.DocumentObjectModel;
 
 namespace evidence_clip_about_public_transport.File_export_mngr
 {
@@ -24,23 +25,15 @@ namespace evidence_clip_about_public_transport.File_export_mngr
         {
             try
             {
-               
-
                 PdfExport pdfExport = new PdfExport();
-
-                MigraDoc.DocumentObjectModel.Document document = pdfExport.CreatePage(data, hide_columns);
+                MigraDoc.DocumentObjectModel.Document document = pdfExport.CreatePage(data,header, hide_columns);
                 document.Info.Title = header;
 
                 MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
-
-                PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-                
+                PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);       
                 renderer.Document = document;
-
                 renderer.RenderDocument();
-                
                 renderer.PdfDocument.Save(path);
-                
 
                 return "Hotovo";
             }

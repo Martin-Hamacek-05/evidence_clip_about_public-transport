@@ -1,7 +1,6 @@
 ﻿using evidence_clip_about_public_transport.DAO;
 using evidence_clip_about_public_transport.DAO.mysql.for_clip;
 using evidence_clip_about_public_transport.Entits;
-using evidence_clip_about_public_transport.Win_forms_user_interface.for_vehicles_on_clip;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,6 +1,7 @@
 ﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.DocumentObjectModel.Visitors;
 using PdfSharp.Drawing;
 using ScottPlot.Finance;
 using System;
@@ -18,13 +19,15 @@ namespace evidence_clip_about_public_transport.vendor
     public class PdfExport
     {
 
-        public Document CreatePage(DataGridView dataGridView,params string[]hide_columns)
+        public Document CreatePage(DataGridView dataGridView,string header,params string[]hide_columns)
         {
             // Each MigraDoc document needs at least one section.
             Document document = new Document();
 
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("styles.xml");
+
+            
 
             XmlNodeList xml_parse_fonts = xmlDoc.GetElementsByTagName("font");
             XmlNodeList xml_parse_rows = xmlDoc.GetElementsByTagName("font");
@@ -34,6 +37,16 @@ namespace evidence_clip_about_public_transport.vendor
             XmlNodeList xml_parse_enable_odd_rows = xmlDoc.GetElementsByTagName("enable_odd_rows");
             XmlNodeList xml_parse_pagestyle = xmlDoc.GetElementsByTagName("pagestyle");
 
+
+            Section section = document.AddSection();
+            Paragraph paragraph = new Paragraph();
+
+            paragraph.AddText(header);
+            paragraph.Format.Font.Color = MigraDoc.DocumentObjectModel.Color.Parse("#"+ xml_parse_fonts[1].Attributes[2].InnerText);
+            paragraph.Format.Font.Size = Int32.Parse(xml_parse_fonts[1].Attributes[1].InnerText);
+            paragraph.Format.Font.Name = xml_parse_fonts[1].Attributes[3].InnerText;
+
+            section.Add(paragraph);
 
             //XFont font = new XFont("Verdana", 20, XFontStyleEx.BoldItalic);
             // Put a logo in the header
@@ -75,7 +88,11 @@ namespace evidence_clip_about_public_transport.vendor
                 {
                     if (!(dataGridView.Columns[i].HeaderText.ToString().Equals(hide_columns[0])))
                     {
+                        MessageBox.Show((i - 1).ToString());
                         var cellA1 = row2[i-1];
+                        cellA1.Format.Font.Color = MigraDoc.DocumentObjectModel.Color.Parse("#" + xml_parse_fonts[4].Attributes[2].InnerText);
+                        cellA1.Format.Font.Name = xml_parse_fonts[4].Attributes[3].InnerText;
+                        cellA1.Format.Font.Size = Int32.Parse(xml_parse_fonts[4].Attributes[1].InnerText);
                         cellA1.Shading.Color = MigraDoc.DocumentObjectModel.Color.Parse("#"+ xml_parse_levels_of_rows[0].Attributes[1].InnerText);
                         cellA1.AddParagraph(dataGridView.Columns[i].HeaderText.ToString());
                     }
@@ -109,9 +126,7 @@ namespace evidence_clip_about_public_transport.vendor
                 }
                 count++;
             }
-            document.LastSection.PageSetup = pageformat(Int32.Parse(xml_parse_pagestyle[0].Attributes[0].InnerText),Int32.Parse(xml_parse_pagestyle[0].Attributes[1].InnerText),Decimal.Parse(xml_parse_pagestyle[0].Attributes[2].InnerText), Decimal.Parse(xml_parse_pagestyle[0].Attributes[3].InnerText), Int32.Parse(xml_parse_pagestyle[0].Attributes[4].InnerText));
-
-            //MessageBox.Show(Int32.Parse(xml_parse_pagestyle[0].Attributes[0].InnerText).ToString() + ", "+Int32.Parse(xml_parse_pagestyle[0].Attributes[1].InnerText).ToString() + ", " + Decimal.Parse(xml_parse_pagestyle[0].Attributes[2].InnerText).ToString() + ", " + Decimal.Parse(xml_parse_pagestyle[0].Attributes[3].InnerText).ToString() + ", " + Int32.Parse(xml_parse_pagestyle[0].Attributes[4].InnerText).ToString());
+            document.LastSection.PageSetup = pageformat(Int32.Parse(xml_parse_pagestyle[0].Attributes[0].InnerText),Int32.Parse(xml_parse_pagestyle[0].Attributes[4].InnerText),Decimal.Parse(xml_parse_pagestyle[0].Attributes[2].InnerText), Decimal.Parse(xml_parse_pagestyle[0].Attributes[3].InnerText), Int32.Parse(xml_parse_pagestyle[0].Attributes[1].InnerText));
 
             document.LastSection.Add(table);
 
@@ -125,7 +140,6 @@ namespace evidence_clip_about_public_transport.vendor
             {
                 pageFormat.PageWidth = get_unit(unit, Decimal.ToDouble(width));
                 pageFormat.PageHeight = get_unit(unit, Decimal.ToDouble(height));
-
                 return pageFormat;
             }
             else 

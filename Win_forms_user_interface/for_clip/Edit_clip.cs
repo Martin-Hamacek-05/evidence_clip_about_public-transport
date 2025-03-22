@@ -43,6 +43,9 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             delete_button.Enabled = false;
             update_button.Enabled = false;
             create_button.Enabled = true;
+
+            arrive.Checked = true;
+
             I_List_to_combobox list_for_lines = Database_server_switch.list_to_combobox();
 
             list_for_lines.selects_I("select id,name_line from line order by length(name_line),name_line", "name_line", "id", lines_combobox);
@@ -87,7 +90,18 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             name_of_clip.Text = clip.Name_of_clip.ToString();
             created.Value = clip.Created.ToDateTime(TimeOnly.Parse("00:00 AM"));
             number_of_filming_day.Value = clip.Number_of_filming_day;
-            arrive_or_depart.Checked = clip.Arrive_or_depart;
+
+            if (clip.Arrive_or_depart)
+            {
+                depart.Checked = true;
+                arrive.Checked = false;
+            }
+            else 
+            {
+                depart.Checked = false;
+                arrive.Checked = true;
+            }
+
             order_on_the_line.Text = clip.Order_on_the_line;
             file_url.Text = clip.File_url;
             lenght_of_clip.Text = clip.Lenght_of_clip.ToString();
@@ -126,6 +140,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
         {
             try
             {
+                bool arrive_or_depart = false;
+
                 File_manager_switch file_Manager_Switch = new File_manager_switch();
                 list_of_id_of_vehicles = new List<int>();
 
@@ -134,10 +150,18 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
                     list_of_id_of_vehicles.Add(Convert.ToInt32(row.Cells[0].Value));
                 }
 
+                if (arrive.Checked == true && depart.Checked == false) 
+                { 
+                    arrive_or_depart = false;
+                }else if(arrive.Checked == false && depart.Checked == true)
+                {
+                    arrive_or_depart = true;
+                }
+
                 I_DAO_Clip new_clip = Database_server_switch.dAO_Clips();
                 I_File_type i_File_Type = file_Manager.selected_type(Int32.Parse(Load_info_from_file.read_info_from()[0]));
 
-                new_clip.new_clip(new Clip(0, name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart.Checked, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue)), list_of_id_of_vehicles);
+                new_clip.new_clip(new Clip(0, name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue)), list_of_id_of_vehicles);
 
                 MessageBox.Show(i_File_Type.record_file(name_of_clip.Text, full_url, Load_info_from_file.read_info_from()[1]+"\\"+ file_url.Text));
             }
@@ -155,9 +179,19 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
         {
             try
             {
+                bool arrive_or_depart = false;
+                if (arrive.Checked == true && depart.Checked == false)
+                {
+                    arrive_or_depart = false;
+                }
+                else if (arrive.Checked == false && depart.Checked == true)
+                {
+                    arrive_or_depart = true;
+                }
+
                 I_File_type i_File_Type = file_Manager.selected_type(Int32.Parse(Load_info_from_file.read_info_from()[0]));
                 I_DAO_Clip update = Database_server_switch.dAO_Clips();
-                MessageBox.Show(update.update_clip(new Clip(Int32.Parse(id_of_clip_label.Text), name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart.Checked, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue))));
+                MessageBox.Show(update.update_clip(new Clip(Int32.Parse(id_of_clip_label.Text), name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue))));
 
                 MessageBox.Show(i_File_Type.rename_file(previours_name, name_of_clip.Text, Load_info_from_file.read_info_from()[1] + "\\" + file_url.Text));
 
