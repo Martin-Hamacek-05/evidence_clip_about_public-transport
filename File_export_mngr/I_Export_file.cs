@@ -11,8 +11,6 @@ namespace evidence_clip_about_public_transport.File_export_mngr
     public interface I_Export_file
     {
         public string export_file(DataGridView data, string path, string header, params string[] hide_columns);
-
-        public string export_file_chart(DataGridView data, string path, string header, FormsPlot chart, params string[] hide_columns); 
         
     }
 }

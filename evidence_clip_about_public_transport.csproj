@@ -15,9 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
     <PackageReference Include="MySql.Data" Version="9.1.0" />
-    <PackageReference Include="PDFsharp" Version="6.1.1" />
-    <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="6.1.1" />
     <PackageReference Include="ScottPlot.WinForms" Version="5.0.47" />
   </ItemGroup>
 

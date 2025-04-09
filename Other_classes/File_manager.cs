@@ -1,6 +1,5 @@
 ﻿
 using evidence_clip_about_public_transport.File_export_mngr;
-using PdfSharp.Charting;
 using ScottPlot.WinForms;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,13 @@ namespace evidence_clip_about_public_transport.Other_classes
     public class File_manager
     {
 
-        private static string filter = "hypetext markup language *.html|*.html|pdf soubor *.pdf|*.pdf";
+        private static string filter = 
+            "hypetext markup language *.html|*.html|" +
+            "textový soubor s oddělovači *.csv|*.csv|" +
+            "textový soubor s tabulátorem oddělenými hodnotami *.tsv|*.tsv|" +
+            "markdown *.md|*.md|" +
+            "javascript object notation *.json|*.json|" +
+            "extensible markup language *.xml|*.xml";
         /// <summary>
         /// Writer csv string to file
         /// </summary>
@@ -53,6 +58,9 @@ namespace evidence_clip_about_public_transport.Other_classes
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = filter;
+            System.Windows.Forms.TextBox textBox = new System.Windows.Forms.TextBox();
+                
+            saveFileDialog.Container.Add(textBox);
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -73,22 +81,6 @@ namespace evidence_clip_about_public_transport.Other_classes
             }
         }
 
-        /// <summary>
-        /// write data from table to file with chart
-        /// </summary>
-        /// <param name="data">table</param>
-        /// <param name="header">header</param>
-        /// <param name="chart">chart</param>
-        public static void export_data_to_other_format_with_chart(DataGridView data, string header,FormsPlot chart)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = filter;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                Export_switch export_Switch = new Export_switch();
-                MessageBox.Show(export_Switch.selected_type_of_file(saveFileDialog.FilterIndex).export_file_chart(data, Path.GetFullPath(saveFileDialog.FileName), header, chart,""));
-            }
-        }
+       
     }
 }

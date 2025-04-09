@@ -45,6 +45,8 @@
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
             data_from_select = new DataGridView();
+            toolStripSeparator4 = new ToolStripSeparator();
+            generate_sequence = new ToolStripButton();
             menu_trip_on_top.SuspendLayout();
             toolstrip_for_work_with_table.SuspendLayout();
             status_strip.SuspendLayout();
@@ -79,7 +81,7 @@
             // toolstrip_for_work_with_table
             // 
             toolstrip_for_work_with_table.ImageScalingSize = new Size(24, 24);
-            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { new_record, toolStripSeparator1, load_button, toolStripSeparator2, search_with_label, search_textbox, search_button, toolStripSeparator3, header });
+            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { new_record, toolStripSeparator4, generate_sequence, toolStripSeparator1, load_button, toolStripSeparator2, search_with_label, search_textbox, search_button, toolStripSeparator3, header });
             toolstrip_for_work_with_table.Location = new Point(0, 24);
             toolstrip_for_work_with_table.Name = "toolstrip_for_work_with_table";
             toolstrip_for_work_with_table.Size = new Size(660, 25);
@@ -168,12 +170,27 @@
             data_from_select.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             data_from_select.Dock = DockStyle.Fill;
             data_from_select.Location = new Point(0, 49);
-            data_from_select.Margin = new Padding(2, 2, 2, 2);
+            data_from_select.Margin = new Padding(2);
             data_from_select.Name = "data_from_select";
             data_from_select.RowHeadersWidth = 62;
             data_from_select.Size = new Size(660, 199);
             data_from_select.TabIndex = 3;
             data_from_select.CellClick += data_from_select_CellClick;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 25);
+            // 
+            // generate_sequence
+            // 
+            generate_sequence.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            generate_sequence.Image = (Image)resources.GetObject("generate_sequence.Image");
+            generate_sequence.ImageTransparentColor = Color.Magenta;
+            generate_sequence.Name = "generate_sequence";
+            generate_sequence.Size = new Size(92, 22);
+            generate_sequence.Text = "Generovat řadu";
+            generate_sequence.Click += generate_sequence_Click;
             // 
             // Show_lines
             // 
@@ -186,7 +203,7 @@
             Controls.Add(menu_trip_on_top);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menu_trip_on_top;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Show_lines";
             Text = "Evidence záběrů - seznam linek";
             menu_trip_on_top.ResumeLayout(false);
@@ -218,5 +235,7 @@
         private ToolStripStatusLabel status_label;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripTextBox header;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton generate_sequence;
     }
 }

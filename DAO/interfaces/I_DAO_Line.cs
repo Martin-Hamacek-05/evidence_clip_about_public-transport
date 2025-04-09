@@ -59,5 +59,7 @@ namespace evidence_clip_about_public_transport.DAO
         /// <param name="lines">list of lines</param>
         /// <returns>is loaded</returns>
         public string load_file(List<Line> lines);
+
+        public string sequence_of_lines(int from, int to, int distance);
     }
 }

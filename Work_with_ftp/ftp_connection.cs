@@ -15,12 +15,11 @@ namespace evidence_clip_about_public_transport.Work_with_ftp
             try
             {
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load("ftp_connect.xml");
+                xmlDoc.Load("file_config.config");
 
-                XmlNodeList server = xmlDoc.GetElementsByTagName("server");
+                XmlNodeList server = xmlDoc.GetElementsByTagName("path");
                 XmlNodeList user_name = xmlDoc.GetElementsByTagName("user_name");
                 XmlNodeList password = xmlDoc.GetElementsByTagName("password");
-
                 return new ftp_connection_object(server[0].InnerText, new NetworkCredential(user_name[0].InnerText, password[0].InnerText));
             }
             catch (Exception exc) 

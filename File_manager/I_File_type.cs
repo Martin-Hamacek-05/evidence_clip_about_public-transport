@@ -15,5 +15,6 @@ namespace evidence_clip_about_public_transport.File_manager
         public List<string> list_of_directories(string path);
         public string make_directory(string name,string path);
         public string copy_file_from_one_location_to_another(string from_, string file, string to_, string alternative);
+        public string move_file(string from_,string to, string file);
     }
 }

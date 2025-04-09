@@ -168,7 +168,7 @@ namespace evidence_clip_about_public_transport
         }
         private void exportdata_button_on_top_menu_trip_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void style_of_document_button_on_top_menu_trip_Click(object sender, EventArgs e)
@@ -179,13 +179,13 @@ namespace evidence_clip_about_public_transport
 
         private void about_software_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void Show_clips_FormClosed(object sender, FormClosedEventArgs e)
         {
             //this.Dispose();
         }
-        
+
         private void edit_author_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Show_author show_Author = new Show_author();
@@ -195,6 +195,12 @@ namespace evidence_clip_about_public_transport
         {
             Ftp_manager ftp_Manager = new Ftp_manager();
             ftp_Manager.Show();
+        }
+
+        private void load_data_Click(object sender, EventArgs e)
+        {
+            Load_table_from_file load_Table_From_File = new Load_table_from_file();
+            load_Table_From_File.Show();
         }
 
     }

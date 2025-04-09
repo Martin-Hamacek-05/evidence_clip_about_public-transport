@@ -16,7 +16,7 @@ using System.Windows.Forms;
 /* author Martin Hamacek, C4c, 2024/2025*/
 namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_lines
 {
-    public partial class Show_lines : Form,I_List_from_table
+    public partial class Show_lines : Form, I_List_from_table
     {
         private readonly string[] headers_in_czech = { "číslo linky", "název linky" };
         public Show_lines()
@@ -26,12 +26,12 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_line
 
         }
 
-        private void new_record_Click(object sender, EventArgs e) 
-        { 
+        private void new_record_Click(object sender, EventArgs e)
+        {
             Edit_line new_line = new Edit_line();
             new_line.Show();
         }
-        private void load_button_Click(object sender, EventArgs e) 
+        private void load_button_Click(object sender, EventArgs e)
         {
             I_DAO_Line load = Database_server_switch.dAO_Line();
             data_from_select.DataSource = load.get_all_line().Tables[0];
@@ -45,7 +45,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_line
             data_from_select.Update();
             status_label.Text = "OK | Počet nalezených záznamů: " + data_from_select.Rows.Count.ToString();
         }
-        private void data_from_select_CellClick(object sender, DataGridViewCellEventArgs e) 
+        private void data_from_select_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             I_DAO_Line load = Database_server_switch.dAO_Line();
             Edit_line edit = new Edit_line();
@@ -58,11 +58,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_line
                 edit.Show();
             }
         }
-        private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e) 
+        private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
         {
             evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text);
         }
-        private void search_button_Click(object sender, EventArgs e) 
+        private void search_button_Click(object sender, EventArgs e)
         {
             try
             {
@@ -83,6 +83,12 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_line
             {
                 MessageBox.Show("Došlo k neočekavané chybě: \n" + exc.Message);
             }
+        }
+
+        private void generate_sequence_Click(object sender, EventArgs e)
+        {
+            Generate_sequence generate_Sequence = new Generate_sequence();
+            generate_Sequence.Show();
         }
     }
 }

@@ -54,9 +54,10 @@
             // 
             // pattern_combobox
             // 
+            pattern_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             pattern_combobox.FormattingEnabled = true;
             pattern_combobox.Location = new Point(68, 14);
-            pattern_combobox.Margin = new Padding(2, 2, 2, 2);
+            pattern_combobox.Margin = new Padding(2);
             pattern_combobox.Name = "pattern_combobox";
             pattern_combobox.Size = new Size(372, 23);
             pattern_combobox.TabIndex = 0;
@@ -64,7 +65,7 @@
             // add_to_list
             // 
             add_to_list.Location = new Point(67, 68);
-            add_to_list.Margin = new Padding(2, 2, 2, 2);
+            add_to_list.Margin = new Padding(2);
             add_to_list.Name = "add_to_list";
             add_to_list.Size = new Size(148, 23);
             add_to_list.TabIndex = 3;
@@ -75,7 +76,7 @@
             // remove_from_list
             // 
             remove_from_list.Location = new Point(68, 179);
-            remove_from_list.Margin = new Padding(2, 2, 2, 2);
+            remove_from_list.Margin = new Padding(2);
             remove_from_list.Name = "remove_from_list";
             remove_from_list.Size = new Size(147, 23);
             remove_from_list.TabIndex = 5;
@@ -86,7 +87,7 @@
             // close_button
             // 
             close_button.Location = new Point(360, 179);
-            close_button.Margin = new Padding(2, 2, 2, 2);
+            close_button.Margin = new Padding(2);
             close_button.Name = "close_button";
             close_button.Size = new Size(78, 23);
             close_button.TabIndex = 6;
@@ -100,7 +101,7 @@
             pattern_on_vehicle.AllowUserToDeleteRows = false;
             pattern_on_vehicle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             pattern_on_vehicle.Location = new Point(68, 99);
-            pattern_on_vehicle.Margin = new Padding(2, 2, 2, 2);
+            pattern_on_vehicle.Margin = new Padding(2);
             pattern_on_vehicle.Name = "pattern_on_vehicle";
             pattern_on_vehicle.RowHeadersWidth = 62;
             pattern_on_vehicle.Size = new Size(371, 71);
@@ -141,7 +142,7 @@
             // from_
             // 
             from_.Location = new Point(68, 41);
-            from_.Margin = new Padding(2, 2, 2, 2);
+            from_.Margin = new Padding(2);
             from_.Name = "from_";
             from_.Size = new Size(169, 23);
             from_.TabIndex = 1;
@@ -149,7 +150,7 @@
             // to_
             // 
             to_.Location = new Point(271, 41);
-            to_.Margin = new Padding(2, 2, 2, 2);
+            to_.Margin = new Padding(2);
             to_.Name = "to_";
             to_.Size = new Size(169, 23);
             to_.TabIndex = 2;
@@ -171,7 +172,7 @@
             Controls.Add(pattern_combobox);
             Controls.Add(pattern_label);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Edit_pattern_on_vehicle";

@@ -122,7 +122,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_vehi
 
         private void edit_subtype_mean_of_transport_button_Click(object sender, EventArgs e)
         {
-            Show_subtype_mean_of_transport subtype_Mean_Of_Transport = new Show_subtype_mean_of_transport();
+            Show_subtype subtype_Mean_Of_Transport = new Show_subtype();
             subtype_Mean_Of_Transport.Show();
         }
 

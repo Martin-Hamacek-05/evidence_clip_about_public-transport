@@ -258,5 +258,47 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_line
 
             }
         }
+
+        public string sequence_of_lines(int from, int to, int distance)
+        {
+            MySqlTransaction mySqlTransaction = null;
+            try
+            {
+                MySqlConnection connection = Database_connect.myssql_connection();
+
+                connection.Open();
+
+                mySqlTransaction = connection.BeginTransaction();
+                MySqlCommand insert_command = new MySqlCommand("insert into line(name_line,number_line) values (@name_line,@number_line)", connection);
+
+                for (int i = from; i <= to; i = i + distance)
+                {
+                    insert_command.Parameters.AddWithValue("@name_line", i.ToString());
+                    insert_command.Parameters.AddWithValue("@number_line", i.ToString());
+
+                    insert_command.ExecuteNonQuery();
+                    insert_command.Parameters.Clear();
+                    //MessageBox.Show("Upsáno");
+
+                }
+                mySqlTransaction.Commit();
+
+                connection.Close();
+                return "Nahráno";
+            }
+            catch (Exception exc)
+            {
+                try
+                {
+                    mySqlTransaction.Rollback();
+                    return exc.ToString();
+                }
+                catch (Exception exc2)
+                {
+                    return exc2.ToString();
+                }
+
+            }
+        }
     }
 }

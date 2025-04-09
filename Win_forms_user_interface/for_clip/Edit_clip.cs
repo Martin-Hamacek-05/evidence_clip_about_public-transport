@@ -25,7 +25,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
     public partial class Edit_clip : Form, I_Edit_data_in_table
     {
         private File_manager_switch file_Manager = new File_manager_switch();
-        
+
         private int selected_index = 0;
 
         private bool is_edited = false;
@@ -33,8 +33,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
         private List<int> list_of_id_of_vehicles;
 
         private string full_url = "";
-
-        private string previours_name;
 
         private readonly string[] headers_in_czech = { "evidenční číslo", "podtyp", "záběr", "dopravce" };
         public Edit_clip()
@@ -52,16 +50,14 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             list_for_lines.selects_II("select id,name_of_stop,direction,platform from stop_ order by name_of_stop", "name_of_stop + ', nástupiště: ' + platform + ', směr: ' + direction", "id", stops_combobox);
             list_for_lines.selects_I("select id,name_ from formats", "name_", "id", formats_combobox);
 
-                
-
-                
-            
-
             I_File_type i_File_Type = file_Manager.selected_type(Int32.Parse(Load_info_from_file.read_info_from()[0]));
 
             for (int i = 0; i < i_File_Type.list_of_directories(Load_info_from_file.read_info_from()[1]).Count; i++)
             {
-                file_url.Items.Add(i_File_Type.list_of_directories(Load_info_from_file.read_info_from()[1])[i]);
+                if (i_File_Type.list_of_directories(Load_info_from_file.read_info_from()[1])[i] != null) 
+                {
+                    file_url.Items.Add(i_File_Type.list_of_directories(Load_info_from_file.read_info_from()[1])[i]);
+                }
             }
 
             //ftp_functions.load_directory_to_combo_box(file_url);
@@ -82,6 +78,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             update_button.Enabled = true;
             is_edited = true;
             create_button.Enabled = false;
+            name_of_clip.Enabled = false;
+            file_url.Enabled = false;
 
             this.Text = "Úprava klipu";
 
@@ -96,7 +94,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
                 depart.Checked = true;
                 arrive.Checked = false;
             }
-            else 
+            else
             {
                 depart.Checked = false;
                 arrive.Checked = true;
@@ -109,8 +107,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             lines_combobox.SelectedValue = clip.Line_id;
             formats_combobox.SelectedValue = clip.Formats_id;
 
-            previours_name = name_of_clip.Text;
-            
+            //previours_name = name_of_clip.Text;
+
             I_Other_database_features other_Database_Features = Database_server_switch.other_Database_Features();
             vehicles_on_clip_label.Text = other_Database_Features.vehicles_on_clip(clip.Id) + " celkem na záběrů: " + clip.Count_of_vehicles_on_clip.ToString() + " vozů";
             id_of_clip_label.Text = clip.Id.ToString();
@@ -150,10 +148,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
                     list_of_id_of_vehicles.Add(Convert.ToInt32(row.Cells[0].Value));
                 }
 
-                if (arrive.Checked == true && depart.Checked == false) 
-                { 
+                if (arrive.Checked == true && depart.Checked == false)
+                {
                     arrive_or_depart = false;
-                }else if(arrive.Checked == false && depart.Checked == true)
+                }
+                else if (arrive.Checked == false && depart.Checked == true)
                 {
                     arrive_or_depart = true;
                 }
@@ -163,7 +162,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
 
                 new_clip.new_clip(new Clip(0, name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue)), list_of_id_of_vehicles);
 
-                MessageBox.Show(i_File_Type.record_file(name_of_clip.Text, full_url, Load_info_from_file.read_info_from()[1]+"\\"+ file_url.Text));
+                MessageBox.Show(i_File_Type.record_file(name_of_clip.Text, full_url, Load_info_from_file.read_info_from()[1] + "\\" + file_url.Text));
             }
             catch (FormatException exc)
             {
@@ -193,9 +192,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
                 I_DAO_Clip update = Database_server_switch.dAO_Clips();
                 MessageBox.Show(update.update_clip(new Clip(Int32.Parse(id_of_clip_label.Text), name_of_clip.Text, DateOnly.FromDateTime(created.Value), Int32.Parse(number_of_filming_day.Text), arrive_or_depart, order_on_the_line.Text, file_url.Text, float.Parse(lenght_of_clip.Text), 0, Convert.ToInt32(stops_combobox.SelectedValue), Convert.ToInt32(formats_combobox.SelectedValue), Convert.ToInt32(lines_combobox.SelectedValue))));
 
-                MessageBox.Show(i_File_Type.rename_file(previours_name, name_of_clip.Text, Load_info_from_file.read_info_from()[1] + "\\" + file_url.Text));
-
-                previours_name = name_of_clip.Text;
+                
             }
             catch (FormatException exc)
             {
@@ -277,7 +274,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
                 {
                     MessageBox.Show("Byl vybrán neplatný záznam\nZkuste vybrat znova požadovaný záznam", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (Exception exc) 
+                catch (Exception exc)
                 {
                     MessageBox.Show(exc.Message);
                 }

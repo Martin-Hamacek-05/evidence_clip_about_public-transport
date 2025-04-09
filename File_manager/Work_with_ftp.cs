@@ -12,7 +12,18 @@ namespace evidence_clip_about_public_transport.File_manager
     {
         public string copy_file_from_one_location_to_another(string from_, string file, string to_, string alternative)
         {
-            throw new NotSupportedException();
+            
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(from_ + file);
+                request.Credentials = ftp_connection.ftp_connect().User_login;
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+
+                using (Stream ftpStream = request.GetResponse().GetResponseStream())
+                using (Stream fileStream = File.Create(to_ + '\\' + alternative + "_" + file))
+                {
+                    ftpStream.CopyTo(fileStream);
+                }
+                return "stáhnuto";
+            
         }
 
         public string delete_file(string name_of_file, string from)
@@ -26,7 +37,7 @@ namespace evidence_clip_about_public_transport.File_manager
                 FtpWebResponse response = (FtpWebResponse)request.GetResponse();
                 response.Close();
 
-                return "Smazáno";
+                return "smazáno";
             }
             catch (Exception e)
             {
@@ -57,7 +68,7 @@ namespace evidence_clip_about_public_transport.File_manager
         {
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftp_connection.ftp_connect().Server + name_of_file);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(from + name_of_file);
                 request.Credentials = ftp_connection.ftp_connect().User_login;
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -93,6 +104,11 @@ namespace evidence_clip_about_public_transport.File_manager
             {
                 return exc.Message;
             }
+        }
+
+        public string move_file(string from_, string to, string file)
+        {
+            throw new NotImplementedException();
         }
 
         public string record_file(string name_of_file, string from, string to)

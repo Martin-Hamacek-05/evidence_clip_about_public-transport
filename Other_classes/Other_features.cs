@@ -135,7 +135,7 @@ namespace evidence_clip_about_public_transport.Other_classes
                     break;
 
                 case (1, 5):
-                    return new Show_subtype_mean_of_transport();
+                    return new Show_subtype();
                     break;
 
                 case (2, 0):
@@ -258,6 +258,25 @@ namespace evidence_clip_about_public_transport.Other_classes
             ColorDialog dialog = new ColorDialog();
             dialog.ShowDialog();
             return (dialog.Color.ToArgb() & 0x00FFFFFF).ToString("X6");
+        }
+
+        public static decimal recalculation_to_inch(int unit)
+        {
+            switch (unit) 
+            {
+                case 0:
+                    return 2.54m;
+                break;
+
+                case 1:
+                    return 20.54m;
+                break;
+
+                case 2:
+                    return 1;
+                break;
+            }
+            return 1;
         }
     }
 }

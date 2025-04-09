@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 {
@@ -37,7 +38,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                     throw new ArgumentException("SQL injection");
                 }
 
-                if(matchII.Success)
+                if (matchII.Success)
                 {
                     throw new UnauthorizedAccessException("provádět dotazy nad tabulkou author je zakazáno. ");
                 }
@@ -49,8 +50,8 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 data_from_select.Update();
                 status_label.Text = "OK | Počet nalezených záznamů: " + data_from_select.Rows.Count.ToString();
             }
-            catch (IndexOutOfRangeException exc) 
-            { 
+            catch (IndexOutOfRangeException exc)
+            {
                 MessageBox.Show("byl proveden dotaz, který neobsahuje select");
                 status_label.Text = "OK | Počet nalezených záznamů: 0";
             }
@@ -60,6 +61,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 MessageBox.Show(exc.Message);
                 status_label.Text = exc.Message;
             }
+        }
+
+        private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
+        {
+            evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select,header.Text,string.Empty);
         }
     }
 }

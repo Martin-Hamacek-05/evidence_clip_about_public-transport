@@ -22,6 +22,9 @@
     <Compile Update="Win_forms_user_interface\for_lines\Edit_line.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Win_forms_user_interface\for_lines\Generate_sequence.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Win_forms_user_interface\for_lines\Show_lines.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,10 +64,10 @@
     <Compile Update="Win_forms_user_interface\for_stops\Show_stops.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Win_forms_user_interface\for_subtype_mean_of_transport\Edit_subtype_mean_of_transport.cs">
+    <Compile Update="Win_forms_user_interface\for_subtype\Edit_subtype.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Win_forms_user_interface\for_subtype_mean_of_transport\Show_subtype_mean_of_transport.cs">
+    <Compile Update="Win_forms_user_interface\for_subtype\Show_subtype.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Win_forms_user_interface\for_vehicles_on_clip\Edit_vehicles_on_clip.cs">
@@ -89,6 +92,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Win_forms_user_interface\other\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Win_forms_user_interface\other\Load_table_from_file.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Win_forms_user_interface\other\Load_window.cs">

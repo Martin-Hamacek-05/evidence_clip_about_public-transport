@@ -78,7 +78,7 @@ namespace evidence_clip_about_public_transport.DAO.mysql.for_stop
         {
             try
             {
-                MySqlDataAdapter adapterII = new MySqlDataAdapter("select * from stop_ ", Database_connect.myssql_connection());
+                MySqlDataAdapter adapterII = new MySqlDataAdapter("select * from stop_ order by name_of_stop", Database_connect.myssql_connection());
                 DataSet dataSet_of_stops = new DataSet();
                 adapterII.Fill(dataSet_of_stops);
                 return dataSet_of_stops;

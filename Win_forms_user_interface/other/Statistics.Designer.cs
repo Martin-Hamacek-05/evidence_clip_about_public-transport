@@ -38,6 +38,10 @@
             year_label = new ToolStripLabel();
             years_combobox = new ToolStripComboBox();
             load_button = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            dpi_for_file_label = new ToolStripLabel();
+            dpi_list = new ToolStripComboBox();
+            export_button = new ToolStripButton();
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
             data_from_select = new DataGridView();
@@ -79,7 +83,7 @@
             // toolstrip_for_work_with_table
             // 
             toolstrip_for_work_with_table.ImageScalingSize = new Size(24, 24);
-            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { type_chart_label, type_chart, year_label, years_combobox, load_button });
+            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { type_chart_label, type_chart, year_label, years_combobox, load_button, toolStripSeparator1, dpi_for_file_label, dpi_list, export_button });
             toolstrip_for_work_with_table.Location = new Point(0, 24);
             toolstrip_for_work_with_table.Name = "toolstrip_for_work_with_table";
             toolstrip_for_work_with_table.Size = new Size(838, 25);
@@ -119,6 +123,34 @@
             load_button.Size = new Size(44, 22);
             load_button.Text = "Načíst";
             load_button.Click += load_button_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 25);
+            // 
+            // dpi_for_file_label
+            // 
+            dpi_for_file_label.Name = "dpi_for_file_label";
+            dpi_for_file_label.Size = new Size(25, 22);
+            dpi_for_file_label.Text = "DPI";
+            // 
+            // dpi_list
+            // 
+            dpi_list.DropDownStyle = ComboBoxStyle.DropDownList;
+            dpi_list.Items.AddRange(new object[] { "75", "90", "150", "300", "600", "900", "1200" });
+            dpi_list.Name = "dpi_list";
+            dpi_list.Size = new Size(121, 25);
+            // 
+            // export_button
+            // 
+            export_button.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            export_button.Image = (Image)resources.GetObject("export_button.Image");
+            export_button.ImageTransparentColor = Color.Magenta;
+            export_button.Name = "export_button";
+            export_button.Size = new Size(92, 22);
+            export_button.Text = "Exportovat graf";
+            export_button.Click += export_button_Click;
             // 
             // status_strip
             // 
@@ -209,5 +241,9 @@
         private ToolStripButton load_button;
         private ToolStripComboBox type_chart;
         private ToolStripLabel type_chart_label;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton export_button;
+        private ToolStripLabel dpi_for_file_label;
+        private ToolStripComboBox dpi_list;
     }
 }

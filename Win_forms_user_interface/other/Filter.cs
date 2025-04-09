@@ -25,14 +25,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
     {
 
         private File_manager_switch file_Manager = new File_manager_switch();
-
-
         private static I_Other_database_features other_Database_Features = Database_server_switch.other_Database_Features();
         private List<CheckedListBox> all_parameters = other_Database_Features.parameters_for_filter();
-
         private string[] headers_in_czech = { "název klipu", "vytvořeno", "číslo natáčecího dne","file_url", "příjezd / odjezd", "název linky", "název zastávky", "nástupiště", "směr", "evidenční čísla vozidel", "podtyp", "dopravní prostředek", "výrobce", "dopravce", "formát" };
-
         private bool search_by_number_ = false;
+
         public Filter()
         {
             InitializeComponent();
@@ -123,24 +120,13 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         }
         private void data_from_select_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*DAO_Line_implement load = new DAO_Line_implement();
-            Edit_line edit = new Edit_line();
-
-            int selected = e.RowIndex;
-            if (selected != -1)
-            {
-                DataGridViewRow selected_row = data_from_select.Rows[selected];
-                edit.set_line_for_edit(load.get_line(Convert.ToInt32(selected_row.Cells[0].Value)));
-                edit.Show();
-            }*/
-            //MessageBox.Show(FindByTag(checkedListBox, "1").ToString());
 
         }
+
         private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
         {
             try
             {
-                //data_from_select.Columns[4].Visible = false;
                 evidence_clip_about_public_transport.Other_classes.File_manager.export_data_to_other_format(data_from_select, header.Text, "file_url");
             }
             catch (Exception exc) 
@@ -159,7 +145,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                     BindingSource bs = new BindingSource();
                     bs.DataSource = data_from_select.DataSource;
                     bs.Filter = data_from_select.Columns[1].HeaderText.ToString() + " LIKE '%" + search_textbox.Text + "%'";
-                    //bs.Filter = string.Format("created >= '{0}' AND created <= '{1}' and name_line='12' or name_line='5'", "2024-01-02","2024-01-31");
                     data_from_select.DataSource = bs;
 
                     data_from_select.Columns[1].HeaderText = headers_in_czech[0];
@@ -171,7 +156,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                     BindingSource bs = new BindingSource();
                     bs.DataSource = data_from_select.DataSource;
                     bs.Filter = data_from_select.Columns[10].HeaderText.ToString() + " LIKE '%" + search_textbox.Text + "%'";
-                    //bs.Filter = string.Format("created >= '{0}' AND created <= '{1}' and name_line='12' or name_line='5'", "2024-01-02","2024-01-31");
                     data_from_select.DataSource = bs;
 
                     data_from_select.Columns[10].HeaderText = headers_in_czech[10];
@@ -231,17 +215,15 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
                     I_File_type i_File_Type = file_Manager.selected_type(Int32.Parse(Load_info_from_file.read_info_from()[0]));
 
-
-                    MessageBox.Show(i_File_Type.copy_file_from_one_location_to_another(Load_info_from_file.read_info_from()[1] + row.Cells[4].Value.ToString() + "\\", row.Cells[1].Value.ToString(), where_file_is.SelectedPath, "_" + count_of_file.ToString()));
-
+                    i_File_Type.copy_file_from_one_location_to_another(Load_info_from_file.read_info_from()[1] + row.Cells[4].Value.ToString() + "\\", row.Cells[1].Value.ToString(), where_file_is.SelectedPath, "_" + count_of_file.ToString());
 
                     data_from_select.Columns[1].HeaderText = headers_in_czech[0];
 
                     count_of_files_in_label.Visible = false;
 
                     copy_of_files_label.Text = "Hotovo";
-
                 }
+                MessageBox.Show("Hotovo");
             }
             catch (System.IO.FileFormatException file_not_fount)
             {

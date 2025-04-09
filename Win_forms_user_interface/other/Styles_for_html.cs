@@ -24,8 +24,6 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
         private List<string> list_of_loaded_colours_of_rows = new List<string>();
 
-
-
         public Styles_for_html()
         {
             InitializeComponent();
@@ -50,14 +48,15 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
 
                 xml_parse = xmlDoc.GetElementsByTagName("background");
-                colour_of_background.Text = xml_parse[0].Attributes[0].Value;
+                colour_of_background.Text = xml_parse[0].Attributes[0].InnerText;
 
                 xml_parse = xmlDoc.GetElementsByTagName("border");
-                border_of_cell.Value = Convert.ToInt32(xml_parse[0].Attributes[0].Value);
-                colour_of_border.Text = xml_parse[0].Attributes[1].Value;
+                border_of_cell.Value = Convert.ToInt32(xml_parse[0].Attributes[0].InnerText);
+                colour_of_border.Text = xml_parse[0].Attributes[1].InnerText;
 
                 xml_parse = xmlDoc.GetElementsByTagName("enable_odd_rows");
-                if (xml_parse[0].Attributes[0].Value.Equals("false"))
+
+                if (xml_parse[0].Attributes[0].InnerText.Equals("false"))
                 {
                     differentiate_even_rows.Checked = false;
                 }
@@ -68,17 +67,11 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
                 xml_parse = xmlDoc.GetElementsByTagName("pagestyle");
 
-                fill_formats_of_paper();
+                width_page.Value = Decimal.Parse(xml_parse[0].Attributes[0].InnerText);
 
-                page_size.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[0].InnerText);
+                height_page.Value = Decimal.Parse(xml_parse[0].Attributes[1].InnerText);
 
-                page_orientation.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[1].InnerText);
-
-                width_page.Value = Decimal.Parse(xml_parse[0].Attributes[2].InnerText);
-
-                height_page.Value = Decimal.Parse(xml_parse[0].Attributes[3].InnerText);
-
-                units.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[4].InnerText);
+                units.SelectedIndex = Int32.Parse(xml_parse[0].Attributes[2].InnerText);
             }
             catch (FileNotFoundException fnf)
             {
@@ -103,7 +96,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
 
         private void save_Click(object sender, EventArgs e)
         {
-            Style_manager.save_style(list_of_loaded_font, list_of_loaded_sizes_of_font, list_of_loaded_colours_of_font, list_of_loaded_colours_of_rows, colour_of_background.Text, (int)border_of_cell.Value, colour_of_border.Text, differentiate_even_rows.Checked,page_size.SelectedIndex,page_orientation.SelectedIndex,width_page.Value,height_page.Value,units.SelectedIndex);
+            Style_manager.save_style(list_of_loaded_font, list_of_loaded_sizes_of_font, list_of_loaded_colours_of_font, list_of_loaded_colours_of_rows, colour_of_background.Text, (int)border_of_cell.Value, colour_of_border.Text, differentiate_even_rows.Checked,width_page.Value,height_page.Value,units.SelectedIndex);
             MessageBox.Show("Uloženo");
         }
 
@@ -164,47 +157,5 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
         {
             colour_of_border.Text = Other_features.color_();
         }
-
-        private void fill_formats_of_paper()
-        {
-            string[] other = { "letter", "legal", "ledger", "P11x17", "vlastní" };
-
-            for (int i = 0; i < 7; i++)
-            {
-                page_size.Items.Add("A" + i);
-            }
-
-            for (int i = 0; i < other.Length; i++)
-            {
-                page_size.Items.Add(other[i]);
-            }
-
-        }
-
-        private void page_size_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (page_size.SelectedIndex == 11)
-            {
-                width_label.Visible = true;
-                height_label.Visible = true;
-                width_page.Visible = true;
-                height_page.Visible = true;
-                orientation_label.Visible = false;
-                page_orientation.Visible = false;
-                units.Visible = true;
-            }
-            else 
-            {
-                width_label.Visible = false;
-                height_label.Visible = false;
-                width_page.Visible = false;
-                height_page.Visible = false;
-                orientation_label.Visible = true;
-                page_orientation.Visible = true;
-                units.Visible = false;
-            }
-        }
-
-        
     }
 }

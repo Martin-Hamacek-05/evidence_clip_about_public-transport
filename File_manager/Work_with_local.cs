@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +73,19 @@ namespace evidence_clip_about_public_transport.File_manager
             {
                 DirectoryInfo create_directory = Directory.CreateDirectory(path+"\\"+name);
                 return "Úspěšně vytvořeno";
+            }
+            catch (Exception exc) 
+            {
+                return exc.Message;
+            }
+        }
+
+        public string move_file(string from_, string to, string file)
+        {
+            try
+            {
+                File.Move(from_+"\\"+file, to+"\\"+file);
+                return "hotovo";
             }
             catch (Exception exc) 
             {

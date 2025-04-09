@@ -32,6 +32,7 @@
             file_button_on_top_menu_trip = new ToolStripMenuItem();
             save_as_button_on_top_menu_trip = new ToolStripMenuItem();
             querryToolStripMenuItem = new ToolStripMenuItem();
+            header = new ToolStripTextBox();
             data_from_select = new DataGridView();
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
@@ -49,10 +50,11 @@
             // menu_trip_on_top
             // 
             menu_trip_on_top.ImageScalingSize = new Size(24, 24);
-            menu_trip_on_top.Items.AddRange(new ToolStripItem[] { file_button_on_top_menu_trip, querryToolStripMenuItem });
+            menu_trip_on_top.Items.AddRange(new ToolStripItem[] { file_button_on_top_menu_trip, querryToolStripMenuItem, header });
             menu_trip_on_top.Location = new Point(0, 0);
             menu_trip_on_top.Name = "menu_trip_on_top";
-            menu_trip_on_top.Size = new Size(1143, 33);
+            menu_trip_on_top.Padding = new Padding(4, 1, 0, 1);
+            menu_trip_on_top.Size = new Size(800, 25);
             menu_trip_on_top.TabIndex = 1;
             menu_trip_on_top.Text = "menu_trip_on_top";
             // 
@@ -60,21 +62,28 @@
             // 
             file_button_on_top_menu_trip.DropDownItems.AddRange(new ToolStripItem[] { save_as_button_on_top_menu_trip });
             file_button_on_top_menu_trip.Name = "file_button_on_top_menu_trip";
-            file_button_on_top_menu_trip.Size = new Size(87, 29);
+            file_button_on_top_menu_trip.Size = new Size(57, 23);
             file_button_on_top_menu_trip.Text = "Soubor";
             // 
             // save_as_button_on_top_menu_trip
             // 
             save_as_button_on_top_menu_trip.Name = "save_as_button_on_top_menu_trip";
-            save_as_button_on_top_menu_trip.Size = new Size(197, 34);
+            save_as_button_on_top_menu_trip.Size = new Size(180, 22);
             save_as_button_on_top_menu_trip.Text = "Uložit jako";
+            save_as_button_on_top_menu_trip.Click += save_as_button_on_top_menu_trip_Click;
             // 
             // querryToolStripMenuItem
             // 
             querryToolStripMenuItem.Name = "querryToolStripMenuItem";
-            querryToolStripMenuItem.Size = new Size(137, 29);
+            querryToolStripMenuItem.Size = new Size(90, 23);
             querryToolStripMenuItem.Text = "Provést dotaz";
             querryToolStripMenuItem.Click += querryToolStripMenuItem_Click;
+            // 
+            // header
+            // 
+            header.Name = "header";
+            header.Size = new Size(100, 23);
+            header.Text = "sem zadejte nadpis";
             // 
             // data_from_select
             // 
@@ -83,32 +92,33 @@
             data_from_select.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             data_from_select.Dock = DockStyle.Fill;
             data_from_select.Location = new Point(0, 0);
+            data_from_select.Margin = new Padding(2);
             data_from_select.Name = "data_from_select";
             data_from_select.ReadOnly = true;
             data_from_select.RowHeadersWidth = 62;
-            data_from_select.Size = new Size(1143, 453);
+            data_from_select.Size = new Size(800, 264);
             data_from_select.TabIndex = 5;
             // 
             // status_strip
             // 
             status_strip.ImageScalingSize = new Size(24, 24);
             status_strip.Items.AddRange(new ToolStripItem[] { status_label });
-            status_strip.Location = new Point(0, 728);
+            status_strip.Location = new Point(0, 428);
             status_strip.Name = "status_strip";
-            status_strip.Size = new Size(1143, 22);
+            status_strip.Padding = new Padding(1, 0, 10, 0);
+            status_strip.Size = new Size(800, 22);
             status_strip.TabIndex = 4;
             status_strip.Text = "statusStrip1";
             // 
             // status_label
             // 
             status_label.Name = "status_label";
-            status_label.Size = new Size(0, 15);
+            status_label.Size = new Size(0, 17);
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.Location = new Point(0, 33);
-            splitContainer1.Margin = new Padding(4, 5, 4, 5);
+            splitContainer1.Location = new Point(0, 25);
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
@@ -119,9 +129,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(data_from_select);
-            splitContainer1.Size = new Size(1143, 695);
-            splitContainer1.SplitterDistance = 235;
-            splitContainer1.SplitterWidth = 7;
+            splitContainer1.Size = new Size(800, 403);
+            splitContainer1.SplitterDistance = 135;
             splitContainer1.TabIndex = 6;
             // 
             // querry_input
@@ -129,21 +138,19 @@
             querry_input.DetectUrls = false;
             querry_input.Dock = DockStyle.Fill;
             querry_input.Location = new Point(0, 0);
-            querry_input.Margin = new Padding(4, 5, 4, 5);
             querry_input.Name = "querry_input";
-            querry_input.Size = new Size(1143, 235);
+            querry_input.Size = new Size(800, 135);
             querry_input.TabIndex = 0;
             querry_input.Text = "";
             // 
             // SQLQuerry
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
+            ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
             Controls.Add(status_strip);
             Controls.Add(menu_trip_on_top);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "SQLQuerry";
             ShowIcon = false;
             Text = "SQL dotaz";
@@ -171,5 +178,6 @@
         private SplitContainer splitContainer1;
         private ToolStripMenuItem querryToolStripMenuItem;
         private RichTextBox querry_input;
+        private ToolStripTextBox header;
     }
 }

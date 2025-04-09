@@ -47,6 +47,7 @@
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
             data_from_select = new DataGridView();
+            load_data = new ToolStripMenuItem();
             menu_trip_on_top.SuspendLayout();
             toolstrip_for_work_with_table.SuspendLayout();
             status_strip.SuspendLayout();
@@ -60,13 +61,13 @@
             menu_trip_on_top.Location = new Point(0, 0);
             menu_trip_on_top.Name = "menu_trip_on_top";
             menu_trip_on_top.Padding = new Padding(4, 1, 0, 1);
-            menu_trip_on_top.Size = new Size(749, 24);
+            menu_trip_on_top.Size = new Size(880, 24);
             menu_trip_on_top.TabIndex = 0;
             menu_trip_on_top.Text = "menu_trip_on_top";
             // 
             // file_button_on_top_menu_trip
             // 
-            file_button_on_top_menu_trip.DropDownItems.AddRange(new ToolStripItem[] { save_as_button_on_top_menu_trip });
+            file_button_on_top_menu_trip.DropDownItems.AddRange(new ToolStripItem[] { load_data, save_as_button_on_top_menu_trip });
             file_button_on_top_menu_trip.Name = "file_button_on_top_menu_trip";
             file_button_on_top_menu_trip.Size = new Size(57, 22);
             file_button_on_top_menu_trip.Text = "Soubor";
@@ -84,7 +85,7 @@
             toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { new_record, toolStripSeparator1, show_from_year_label, from_year_combo_box, load_button, toolStripSeparator2, search_with_clip_name_label, search_clip_textbox, search_button, toolStripSeparator3, header });
             toolstrip_for_work_with_table.Location = new Point(0, 24);
             toolstrip_for_work_with_table.Name = "toolstrip_for_work_with_table";
-            toolstrip_for_work_with_table.Size = new Size(749, 25);
+            toolstrip_for_work_with_table.Size = new Size(880, 25);
             toolstrip_for_work_with_table.TabIndex = 1;
             toolstrip_for_work_with_table.Text = "toolStrip1";
             // 
@@ -167,7 +168,7 @@
             status_strip.Location = new Point(0, 353);
             status_strip.Name = "status_strip";
             status_strip.Padding = new Padding(1, 0, 10, 0);
-            status_strip.Size = new Size(749, 22);
+            status_strip.Size = new Size(880, 22);
             status_strip.TabIndex = 2;
             status_strip.Text = "statusStrip1";
             // 
@@ -186,15 +187,22 @@
             data_from_select.Margin = new Padding(2);
             data_from_select.Name = "data_from_select";
             data_from_select.RowHeadersWidth = 62;
-            data_from_select.Size = new Size(749, 304);
+            data_from_select.Size = new Size(880, 304);
             data_from_select.TabIndex = 3;
             data_from_select.CellClick += data_from_select_CellClick;
+            // 
+            // load_data
+            // 
+            load_data.Name = "load_data";
+            load_data.Size = new Size(180, 22);
+            load_data.Text = "Import dat";
+            load_data.Click += load_data_Click;
             // 
             // Show_clips
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(749, 375);
+            ClientSize = new Size(880, 375);
             Controls.Add(data_from_select);
             Controls.Add(status_strip);
             Controls.Add(toolstrip_for_work_with_table);
@@ -236,5 +244,6 @@
         private ToolStripStatusLabel status_label;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripTextBox header;
+        private ToolStripMenuItem load_data;
     }
 }

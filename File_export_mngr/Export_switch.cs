@@ -20,7 +20,11 @@ namespace evidence_clip_about_public_transport.File_export_mngr
         {
             types_of_file.Add(null);
             types_of_file.Add(new Export_to_html());
-            types_of_file.Add(new Export_to_pdf());
+            types_of_file.Add(new Export_to_csv());
+            types_of_file.Add(new Export_to_tsv());
+            types_of_file.Add(new Export_to_markdown());
+            types_of_file.Add(new Export_to_json());
+            types_of_file.Add(new Export_to_xml());
         }
     }
 }
