@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<style>
+<levels_of_font>
+<font level="normal" size="8" color="804000" name_of_font="Arial" />
+<font level="header" size="16" color="008080" name_of_font="Calibri" />
+<font level="odd" size="8" color="FF80FF" name_of_font="Times New Roman" />
+<font level="even" size="8" color="400080" name_of_font="Times New Roman" />
+<font level="header_of_table" size="8" color="0000FF" name_of_font="Tahoma" />
+</levels_of_font>
+<levels_of_rows>
+<row level="header" color="2F5496" />
+<row level="odd" color="D9E2F3" />
+<row level="even" color="B4C6E7" />
+</levels_of_rows>
+<background color="00FFFF" />
+<border size="0" color="804000" />
+<enable_odd_rows set="true" />
+<pagestyle width="21,00" height="29,70" units="0"/>
+</style>
