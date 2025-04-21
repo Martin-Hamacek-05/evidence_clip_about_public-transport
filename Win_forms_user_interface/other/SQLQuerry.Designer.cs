@@ -33,6 +33,8 @@
             save_as_button_on_top_menu_trip = new ToolStripMenuItem();
             querryToolStripMenuItem = new ToolStripMenuItem();
             header = new ToolStripTextBox();
+            copy_filesToolStripMenuItem = new ToolStripMenuItem();
+            show_clipToolStripMenuItem = new ToolStripMenuItem();
             data_from_select = new DataGridView();
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
@@ -50,7 +52,7 @@
             // menu_trip_on_top
             // 
             menu_trip_on_top.ImageScalingSize = new Size(24, 24);
-            menu_trip_on_top.Items.AddRange(new ToolStripItem[] { file_button_on_top_menu_trip, querryToolStripMenuItem, header });
+            menu_trip_on_top.Items.AddRange(new ToolStripItem[] { file_button_on_top_menu_trip, querryToolStripMenuItem, header, copy_filesToolStripMenuItem, show_clipToolStripMenuItem });
             menu_trip_on_top.Location = new Point(0, 0);
             menu_trip_on_top.Name = "menu_trip_on_top";
             menu_trip_on_top.Padding = new Padding(4, 1, 0, 1);
@@ -68,7 +70,7 @@
             // save_as_button_on_top_menu_trip
             // 
             save_as_button_on_top_menu_trip.Name = "save_as_button_on_top_menu_trip";
-            save_as_button_on_top_menu_trip.Size = new Size(180, 22);
+            save_as_button_on_top_menu_trip.Size = new Size(129, 22);
             save_as_button_on_top_menu_trip.Text = "Uložit jako";
             save_as_button_on_top_menu_trip.Click += save_as_button_on_top_menu_trip_Click;
             // 
@@ -85,6 +87,22 @@
             header.Size = new Size(100, 23);
             header.Text = "sem zadejte nadpis";
             // 
+            // copy_filesToolStripMenuItem
+            // 
+            copy_filesToolStripMenuItem.Enabled = false;
+            copy_filesToolStripMenuItem.Name = "copy_filesToolStripMenuItem";
+            copy_filesToolStripMenuItem.Size = new Size(122, 23);
+            copy_filesToolStripMenuItem.Text = "Zkopírovat soubory";
+            copy_filesToolStripMenuItem.Click += copy_filesToolStripMenuItem_Click;
+            // 
+            // show_clipToolStripMenuItem
+            // 
+            show_clipToolStripMenuItem.Enabled = false;
+            show_clipToolStripMenuItem.Name = "show_clipToolStripMenuItem";
+            show_clipToolStripMenuItem.Size = new Size(93, 23);
+            show_clipToolStripMenuItem.Text = "Zobrazit záběr";
+            show_clipToolStripMenuItem.Click += show_clipToolStripMenuItem_Click;
+            // 
             // data_from_select
             // 
             data_from_select.AllowUserToAddRows = false;
@@ -98,6 +116,7 @@
             data_from_select.RowHeadersWidth = 62;
             data_from_select.Size = new Size(800, 264);
             data_from_select.TabIndex = 5;
+            data_from_select.CellClick += data_from_select_CellClick;
             // 
             // status_strip
             // 
@@ -179,5 +198,7 @@
         private ToolStripMenuItem querryToolStripMenuItem;
         private RichTextBox querry_input;
         private ToolStripTextBox header;
+        private ToolStripMenuItem copy_filesToolStripMenuItem;
+        private ToolStripMenuItem show_clipToolStripMenuItem;
     }
 }

@@ -9,9 +9,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.DAO.mysql.for_producer
 {
+
+    /// <summary>
+    /// This class is implent of interface I_DAO_Producer for MySQL server
+    /// </summary>
     public class DAO_Producer_implement : I_DAO_Producer
     {
         public string delete_producer(int id)

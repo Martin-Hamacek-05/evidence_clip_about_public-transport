@@ -11,9 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using evidence_clip_about_public_transport.exceptions;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.DAO.mysql.for_line
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Line for MySQL server
+    /// </summary>
     public class DAO_Line_implement : I_DAO_Line
     {
 

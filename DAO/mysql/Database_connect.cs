@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using evidence_clip_about_public_transport.exceptions;
 using System.Xml;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Database_connection
 {
     /// <summary>

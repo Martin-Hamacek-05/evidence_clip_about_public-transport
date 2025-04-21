@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Text.Json;
 
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_export_mngr
 {
+    /// <summary>
+    /// Convert selected data to JSON file
+    /// </summary>
     public class Export_to_json : I_Export_file
     {
         private static readonly char blockquote = '"';
@@ -69,31 +72,52 @@ namespace evidence_clip_about_public_transport.File_export_mngr
             }
         }
 
+        /// <summary>
+        /// replace form of datatype to valid version
+        /// </summary>
+        /// <param name="column">name of column</param>
+        /// <param name="value">value</param>
+        /// <param name="datatype">datatapy</param>
+        /// <returns>valid string</returns>
         private string datatype(string column, string value, string datatype)
         {
+
+            string diaritics = "áćéíĺńóŕśúýźčďěľňřšťžůäïëöüÿÁĆÉÍĹŃÓŔŚÚÝŹČĎĚĽŇŘŠŤŽŮÄÏËÖÜŸ";
+
+            string with_out_diaritics = "aceilnorsuyzcdelnrstzuaieouyACEILNORSUYZCDELNRSTZUAIEOUY";
+
+            string between_string = column;
+            between_string = between_string.Replace(' ', '_');
+            between_string = between_string.Replace('/', '_');
+
+            for (int i = 0; i < diaritics.Length; i++)
+            {
+                between_string = between_string.Replace(diaritics[i], with_out_diaritics[i]);
+            }
+
             if (value.Equals("False"))
             {
-                return blockquote + column + blockquote + ":false";
+                return blockquote + between_string + blockquote + ":false";
             }
 
             if (value.Equals("True"))
             {
-                return blockquote + column + blockquote + ":true";
+                return blockquote + between_string + blockquote + ":true";
             }
 
             if (datatype.Equals("System.DateTime"))
             {
                 var parsedDate = DateTime.Parse(value);
-                return blockquote + column + blockquote + ":" + JsonSerializer.Serialize(parsedDate);
+                return blockquote + between_string + blockquote + ":" + JsonSerializer.Serialize(parsedDate);
             }
 
             if (datatype.Equals("System.String"))
             {
-                return blockquote + column + blockquote + ":" + blockquote + value + blockquote;
+                return blockquote + between_string + blockquote + ":" + blockquote + value + blockquote;
             }
             else
             {
-                return blockquote + column + blockquote + ":" + value;
+                return blockquote + between_string + blockquote + ":" + value;
             }
 
             

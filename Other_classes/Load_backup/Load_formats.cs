@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Other_classes.Load_backup
 {
+    /// <summary>
+    /// export data from file to table Formats
+    /// </summary>
     public class Load_formats : I_Load_to_database
     {
         public string load_database(string path)

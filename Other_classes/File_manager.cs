@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Other_classes
 {
     /// <summary>
@@ -19,13 +19,16 @@ namespace evidence_clip_about_public_transport.Other_classes
     public class File_manager
     {
 
-        private static string filter = 
+        private static string filter =
             "hypetext markup language *.html|*.html|" +
             "textový soubor s oddělovači *.csv|*.csv|" +
             "textový soubor s tabulátorem oddělenými hodnotami *.tsv|*.tsv|" +
             "markdown *.md|*.md|" +
             "javascript object notation *.json|*.json|" +
-            "extensible markup language *.xml|*.xml";
+            "extensible markup language *.xml|*.xml|" +
+            "extensible markup language - včetně datových typu *.xml|*.xml|"+
+            "sešit MS Excel 2007 a výše *.xlsx|*.xlsx";
+            
         /// <summary>
         /// Writer csv string to file
         /// </summary>
@@ -59,8 +62,6 @@ namespace evidence_clip_about_public_transport.Other_classes
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = filter;
             System.Windows.Forms.TextBox textBox = new System.Windows.Forms.TextBox();
-                
-            saveFileDialog.Container.Add(textBox);
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {

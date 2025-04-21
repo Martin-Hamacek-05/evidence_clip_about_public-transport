@@ -9,9 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using evidence_clip_about_public_transport.exceptions;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO.mysql.for_mean_of_transport
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Mean_of_transport for MySQL server
+    /// </summary>
     public class DAO_Mean_of_transport_implement : I_DAO_Mean_of_transport
     {
         public string delete_mean_of_transport(int id)

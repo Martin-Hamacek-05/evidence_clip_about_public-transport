@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -60,6 +60,13 @@ namespace evidence_clip_about_public_transport.DAO
         /// <returns>is loaded</returns>
         public string load_file(List<Line> lines);
 
+        /// <summary>
+        /// Generate sequence of lines
+        /// </summary>
+        /// <param name="from">minimal value</param>
+        /// <param name="to">max value</param>
+        /// <param name="distance">step</param>
+        /// <returns>stave</returns>
         public string sequence_of_lines(int from, int to, int distance);
     }
 }

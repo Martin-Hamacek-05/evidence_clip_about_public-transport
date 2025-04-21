@@ -40,9 +40,8 @@
             load_popup.Dock = DockStyle.Fill;
             load_popup.Image = (Image)resources.GetObject("load_popup.Image");
             load_popup.Location = new Point(0, 0);
-            load_popup.Margin = new Padding(4, 5, 4, 5);
             load_popup.Name = "load_popup";
-            load_popup.Size = new Size(1010, 728);
+            load_popup.Size = new Size(707, 437);
             load_popup.SizeMode = PictureBoxSizeMode.Zoom;
             load_popup.TabIndex = 0;
             load_popup.TabStop = false;
@@ -53,13 +52,12 @@
             // 
             // Load_window
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 728);
+            ClientSize = new Size(707, 437);
             Controls.Add(load_popup);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 5, 4, 5);
             Name = "Load_window";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Load_window";

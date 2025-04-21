@@ -34,6 +34,8 @@ namespace evidence_clip_about_public_transport
         private readonly string[] headers_in_czech = { "název klipu", "pořízeno", "číslo natáčecího dne", "příjezd / odjezd", "linka", "zastávka", "nástupiště", "směr", "evidenční čísla vozidel", "formát" };
 
         private bool search_by_number_ = false;
+
+        private int selected;
         public Show_clips()
         {
             try
@@ -90,19 +92,8 @@ namespace evidence_clip_about_public_transport
         }
         private void data_from_select_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            I_DAO_Clip load = Database_server_switch.dAO_Clips();
-            Edit_clip edit = new Edit_clip();
-
-            int selected = e.RowIndex;
-            if (selected != -1)
-            {
-
-                DataGridViewRow selected_row = data_from_select.Rows[selected];
-
-
-                edit.set_selected_clip(load.get_clip(Convert.ToInt32(selected_row.Cells[0].Value)));
-                edit.Show();
-            }
+            show_selected_record.Enabled = true;
+            selected = e.RowIndex;
         }
 
         private void save_as_button_on_top_menu_trip_Click(object sender, EventArgs e)
@@ -203,5 +194,19 @@ namespace evidence_clip_about_public_transport
             load_Table_From_File.Show();
         }
 
+        private void show_selected_record_Click(object sender, EventArgs e)
+        {
+            I_DAO_Clip load = Database_server_switch.dAO_Clips();
+            Edit_clip edit = new Edit_clip();
+
+            if (selected != -1)
+            {
+
+                DataGridViewRow selected_row = data_from_select.Rows[selected];
+
+                edit.set_selected_clip(load.get_clip(Convert.ToInt32(selected_row.Cells[0].Value)));
+                edit.Show();
+            }
+        }
     }
 }

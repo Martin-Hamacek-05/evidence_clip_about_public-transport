@@ -6,9 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Other_classes
 {
+    /// <summary>
+    /// Load and save data of styles
+    /// </summary>
     public class Style_manager
     {
         private static readonly char blockquote = '"';

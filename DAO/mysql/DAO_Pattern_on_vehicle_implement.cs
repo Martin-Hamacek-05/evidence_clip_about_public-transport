@@ -9,9 +9,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.DAO.mysql.for_pattern_on_vehicle
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Pattern_on_vehicle for MySQL server
+    /// </summary>
     public class DAO_Pattern_on_vehicle_implement : I_DAO_Pattern_on_vehicle
     {
 

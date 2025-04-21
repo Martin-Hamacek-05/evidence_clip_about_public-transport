@@ -39,7 +39,6 @@
             order_on_the_line = new TextBox();
             created = new DateTimePicker();
             number_of_filming_day = new NumericUpDown();
-            lenght_of_clip = new TextBox();
             update_button = new Button();
             delete_button = new Button();
             create_button = new Button();
@@ -61,8 +60,10 @@
             play_clip = new Button();
             arrive = new RadioButton();
             depart = new RadioButton();
+            lenght_of_clip = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)number_of_filming_day).BeginInit();
             ((System.ComponentModel.ISupportInitialize)vehicles_on_clip).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lenght_of_clip).BeginInit();
             SuspendLayout();
             // 
             // name_of_clip_label
@@ -161,14 +162,6 @@
             number_of_filming_day.Name = "number_of_filming_day";
             number_of_filming_day.Size = new Size(369, 23);
             number_of_filming_day.TabIndex = 2;
-            // 
-            // lenght_of_clip
-            // 
-            lenght_of_clip.Location = new Point(186, 172);
-            lenght_of_clip.Margin = new Padding(2);
-            lenght_of_clip.Name = "lenght_of_clip";
-            lenght_of_clip.Size = new Size(370, 23);
-            lenght_of_clip.TabIndex = 6;
             // 
             // update_button
             // 
@@ -390,12 +383,21 @@
             depart.Text = "odjezd";
             depart.UseVisualStyleBackColor = true;
             // 
+            // lenght_of_clip
+            // 
+            lenght_of_clip.Location = new Point(186, 172);
+            lenght_of_clip.Maximum = new decimal(new int[] { 659253665, 13076, 0, 0 });
+            lenght_of_clip.Name = "lenght_of_clip";
+            lenght_of_clip.Size = new Size(371, 23);
+            lenght_of_clip.TabIndex = 39;
+            // 
             // Edit_clip
             // 
             AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(564, 585);
+            Controls.Add(lenght_of_clip);
             Controls.Add(depart);
             Controls.Add(arrive);
             Controls.Add(play_clip);
@@ -417,7 +419,6 @@
             Controls.Add(create_button);
             Controls.Add(delete_button);
             Controls.Add(update_button);
-            Controls.Add(lenght_of_clip);
             Controls.Add(number_of_filming_day);
             Controls.Add(created);
             Controls.Add(order_on_the_line);
@@ -439,6 +440,7 @@
             DragEnter += Edit_clip_DragEnter_1;
             ((System.ComponentModel.ISupportInitialize)number_of_filming_day).EndInit();
             ((System.ComponentModel.ISupportInitialize)vehicles_on_clip).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lenght_of_clip).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -455,7 +457,6 @@
         private TextBox order_on_the_line;
         private DateTimePicker created;
         private NumericUpDown number_of_filming_day;
-        private TextBox lenght_of_clip;
         private Button update_button;
         private Button delete_button;
         private Button create_button;
@@ -477,5 +478,6 @@
         private Button play_clip;
         private RadioButton arrive;
         private RadioButton depart;
+        private NumericUpDown lenght_of_clip;
     }
 }

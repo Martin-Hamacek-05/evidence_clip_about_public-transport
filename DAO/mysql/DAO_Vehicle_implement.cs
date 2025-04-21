@@ -4,9 +4,12 @@ using evidence_clip_about_public_transport.exceptions;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Globalization;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.DAO.mysql.for_vehicles
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Vehicle for MySQL server
+    /// </summary>
     public class DAO_Vehicle_implement : I_DAO_Vehicle
     {
         public string delete_vehicle(int id)

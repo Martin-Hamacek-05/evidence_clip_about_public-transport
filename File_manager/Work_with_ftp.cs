@@ -1,13 +1,17 @@
 ﻿using evidence_clip_about_public_transport.Work_with_ftp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_manager
 {
+    /// <summary>
+    /// Work a files on FTP Server. <b>WARNING: FTP protocol is not encrypted</b>
+    /// </summary>
     public class Work_with_ftp : I_File_type
     {
         public string copy_file_from_one_location_to_another(string from_, string file, string to_, string alternative)
@@ -30,7 +34,7 @@ namespace evidence_clip_about_public_transport.File_manager
         {
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftp_connection.ftp_connect().Server + name_of_file);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(from +"/"+ name_of_file);
                 request.Credentials = ftp_connection.ftp_connect().User_login;
                 request.Method = WebRequestMethods.Ftp.DeleteFile;
 
@@ -47,38 +51,62 @@ namespace evidence_clip_about_public_transport.File_manager
 
         public List<string> list_of_directories(string path)
         {
-            List<string> list_of_directories = new List<string>();
-            FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(path);
-            ftpRequest.Credentials = ftp_connection.ftp_connect().User_login;
-            ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
-            FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
-            StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
-            string line = streamReader.ReadLine();
-            while (!string.IsNullOrEmpty(line))
+            try
             {
-                line = streamReader.ReadLine();
-                list_of_directories.Add(line);
+                List<string> list_of_directories = new List<string>();
+                FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(path);
+                ftpRequest.Credentials = ftp_connection.ftp_connect().User_login;
+                ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
+                StreamReader streamReader = new StreamReader(response.GetResponseStream());
+
+                string line = streamReader.ReadLine();
+                while (!string.IsNullOrEmpty(line))
+                {
+                    line = streamReader.ReadLine();
+                    list_of_directories.Add(line);
+                }
+                streamReader.Close();
+                return list_of_directories;
             }
-            streamReader.Close();
-            return list_of_directories;
+            catch (Exception exc) 
+            {
+                MessageBox.Show(exc.Message);
+                return null;
+            }
         }
 
         public string load_file(string name_of_file, string from)
         {
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(from + name_of_file);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = name_of_file;
+                
+                if (saveFileDialog.ShowDialog() == DialogResult.OK) 
+                {
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(from+"//"+ name_of_file);
+
                 request.Credentials = ftp_connection.ftp_connect().User_login;
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                
                 
                 using (Stream ftpStream = request.GetResponse().GetResponseStream())
                 using (Stream fileStream = File.Create(Path.GetFullPath(saveFileDialog.FileName)))
                 {
                     ftpStream.CopyTo(fileStream);
                 }
-                return "stáhnuto";
+
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo(saveFileDialog.FileName)
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
+
+                    return "stáhnuto";
+                }
+                return "funkce nebyla provedena";
             }
             catch (Exception exc) 
             { 
@@ -118,7 +146,7 @@ namespace evidence_clip_about_public_transport.File_manager
                 using (var client = new WebClient())
                 {
                     client.Credentials = ftp_connection.ftp_connect().User_login;
-                    client.UploadFile(ftp_connection.ftp_connect().Server + Path.GetFileName(name_of_file), WebRequestMethods.Ftp.UploadFile, name_of_file);
+                    client.UploadFile(to+"/"+name_of_file, WebRequestMethods.Ftp.UploadFile, from+"/"+name_of_file);
                 }
                 return "úspěšně nahráno";
             }

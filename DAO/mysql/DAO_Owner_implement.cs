@@ -8,9 +8,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author@ Martin Hamacek, C4c, 2024/2025 */
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO.mysql.for_owner
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Owner for MySQL server
+    /// </summary>
     public class DAO_Owner_implement : I_DAO_Owner
     {
 

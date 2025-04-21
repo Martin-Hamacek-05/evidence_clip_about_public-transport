@@ -292,7 +292,7 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.for_clip
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             name_of_clip.Text = Path.GetFileName(filePaths[0]);
             created.Value = File.GetCreationTime(filePaths[0]);
-            full_url = filePaths[0];
+            full_url = Path.GetDirectoryName(filePaths[0]);
         }
 
         private void Edit_clip_DragEnter(object sender, DragEventArgs e)

@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -50,8 +50,17 @@ namespace evidence_clip_about_public_transport.DAO
         /// <returns>List of unique names in formats</returns>
         public CheckedListBox get_distict_format();
 
+        /// <summary>
+        /// Save backup of table backup
+        /// </summary>
+        /// <returns>list of formats</returns>
         public List<Formats> get_all_for_backup();
 
+        /// <summary>
+        /// Load backup of formats
+        /// </summary>
+        /// <param name="formats">list of formats</param>
+        /// <returns>stave</returns>
         public string load_file(List<Formats> formats);
 
     }

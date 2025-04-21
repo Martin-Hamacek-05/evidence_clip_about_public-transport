@@ -5,9 +5,12 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_export_mngr
 {
+    /// <summary>
+    /// Convert selected data to xml file
+    /// </summary>
     public class Export_to_xml : I_Export_file
     {
         private static readonly char blockquote = '"';
@@ -62,6 +65,13 @@ namespace evidence_clip_about_public_transport.File_export_mngr
             }
         }
 
+        /// <summary>
+        /// replace form of datatype to valid version
+        /// </summary>
+        /// <param name="column">name of column</param>
+        /// <param name="value">value</param>
+        /// <param name="datatype">datatapy</param>
+        /// <returns>valid string</returns>
         private string datatype(string column, string value, string datatype)
         {
             string diaritics = "áćéíĺńóŕśúýźčďěľňřšťžůäïëöüÿÁĆÉÍĹŃÓŔŚÚÝŹČĎĚĽŇŘŠŤŽŮÄÏËÖÜŸ";

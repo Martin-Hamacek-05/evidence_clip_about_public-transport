@@ -5,12 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_manager
 {
+    /// <summary>
+    /// Load and save configuration for source of files
+    /// </summary>
     public class Load_info_from_file
     {
         private static readonly char blockquote = '"';
+
+        /// <summary>
+        /// write set propeties to file
+        /// </summary>
+        /// <param name="type_of_server"></param>
+        /// <param name="path"></param>
+        /// <param name="user_name"></param>
+        /// <param name="password"></param>
+        /// <returns>stave</returns>
         public static string write_info_to_file(string type_of_server,string path,string user_name,string password)
         {
             try
@@ -36,6 +48,10 @@ namespace evidence_clip_about_public_transport.File_manager
             }
         }
 
+        /// <summary>
+        /// load all information from configuration file
+        /// </summary>
+        /// <returns>propeties from congiguration file</returns>
         public static string[] read_info_from()
         {
             try

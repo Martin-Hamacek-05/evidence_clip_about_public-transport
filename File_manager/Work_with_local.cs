@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_manager
 {
+    /// <summary>
+    /// Work with files on connected disk on this computer
+    /// </summary>
     public class Work_with_local : I_File_type
     {
         public string copy_file_from_one_location_to_another(string from_, string file, string to_, string alternative)
@@ -23,7 +25,7 @@ namespace evidence_clip_about_public_transport.File_manager
         {
             try 
             { 
-                File.Delete(from + name_of_file);
+                File.Delete(from +"\\"+ name_of_file);
                 return "smazáno";
             }
             catch (Exception exc)
@@ -36,12 +38,14 @@ namespace evidence_clip_about_public_transport.File_manager
         {
             try
             {
-                DirectoryInfo d = new DirectoryInfo(path); //Assuming Test is your Folder
+                DirectoryInfo d = new DirectoryInfo(path); 
 
-                FileInfo[] Files = d.GetFiles(); //Getting Text files
+                DirectoryInfo[] Files = d.GetDirectories();
                 List<string> list = new List<string>();
 
-                foreach (FileInfo file in Files)
+                var filtered = Files.Where(f => !f.Attributes.HasFlag(FileAttributes.Hidden)/* && f.CreationTime.Date >= from_.Value && f.CreationTime.Date <= to_.Value*/);
+
+                foreach (DirectoryInfo file in filtered)
                 {
                     list.Add(file.Name);
                 }
@@ -58,7 +62,13 @@ namespace evidence_clip_about_public_transport.File_manager
         {
             try
             {
-                Process.Start(from + name_of_file);
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo(from + "\\" + name_of_file)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
+               
                 return "spuštěno";
             }
             catch (Exception exc) 
@@ -98,8 +108,8 @@ namespace evidence_clip_about_public_transport.File_manager
             
             try
             {
-                File.Copy(from, to + "\\" + name_of_file, true);
-                return "úspěšně zkopírováno";
+                File.Copy(from + "\\" + name_of_file, to + "\\" + name_of_file, true);
+                return "úspěšně nahráno";
             }
             catch (Exception exc)
             {

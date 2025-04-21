@@ -9,22 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO.mysql.other_features
 {
     /// <summary>
-    /// Generate combobox from sql querry
+    /// Generate combobox from sql querry for MySQL server
     /// </summary>
     public class List_to_combobox : I_List_to_combobox
     {
-        /// <summary>
-        /// Fill combobox of data from other table
-        /// </summary>
-        /// <param name="sql_querry"></param>
-        /// <param name="value_"></param>
-        /// <param name="id"></param>
-        /// <param name="combobox"></param>
-        /// <param name="connection"></param>
+        
         public void selects_I(string sql_querry, string value_, string id, ComboBox combobox)
         {
             DataTable dataTable = new DataTable();
@@ -66,14 +59,7 @@ namespace evidence_clip_about_public_transport.DAO.mysql.other_features
                 MessageBox.Show("Někde se stala chyba: \n" + exc.ToString(), "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /// <summary>
-        /// Fill combobox of data from other table with custom labels
-        /// </summary>
-        /// <param name="sql_querry"></param>
-        /// <param name="value_"></param>
-        /// <param name="id"></param>
-        /// <param name="combobox"></param>
-        /// <param name="connection"></param>
+     
         public void selects_II(string sql_querry, string value_, string id, ComboBox combobox)
         {
             MySqlConnection connection = Database_connect.myssql_connection();

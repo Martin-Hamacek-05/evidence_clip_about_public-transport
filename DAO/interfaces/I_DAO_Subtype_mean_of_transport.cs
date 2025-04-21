@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -60,8 +60,18 @@ namespace evidence_clip_about_public_transport.DAO
         /// <returns>checklist of owner</returns>
         public CheckedListBox get_distict_subtype_mean_of_public_transport();
 
+        /// <summary>
+        /// Generate backup of Subtype_mean_of_transport
+        /// </summary>
+        /// <returns>list of Subtype_mean_of_transport</returns>
         public List<Subtype_mean_of_transport> get_all_for_backup();
 
+
+        /// <summary>
+        /// Load backup of Subtype_mean_of_transport
+        /// </summary>
+        /// <param name="lines">list of Subtype_mean_of_transport</param>
+        /// <returns>stave</returns>
         public string load_file(List<Subtype_mean_of_transport> lines);
     }
 }

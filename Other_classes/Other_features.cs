@@ -16,7 +16,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Other_classes
 {
     /// <summary>
@@ -32,6 +32,7 @@ namespace evidence_clip_about_public_transport.Other_classes
         public static string procedure_convertor(int id)
         {
             List<string> list = new List<string>();
+            list.Add("overview");
             list.Add("recalculation_clips_on_days");
             list.Add("recalculation_clips_on_month");
             list.Add("recalculation_clip_on_line");
@@ -58,41 +59,23 @@ namespace evidence_clip_about_public_transport.Other_classes
             return list;
         }
 
+        /// <summary>
+        /// convert selected index to czech name of statistics
+        /// </summary>
+        /// <param name="index">index</param>
+        /// <returns>selected string</returns>
         public static string name_of_statistics(int index)
         {
-            string[] names = { "přepočet záběrů na dny (I)", "přepočet záběrů na měsíc (I)", "přepočet záběrů na jednotlivé linky (I)", "přepočet záběrů na jednotlivé zastávky (I)", "přepočet dnů na zastávky (I)", "přepočet záběrů na podtyp dopravních prostředků (II)", "přepočet linek na zastávku na základě klipů (II)", "přepočet linek na podtyp dopravních prostředků (III)" };
+            string[] names = { "celkový přehled","přepočet záběrů na dny (I)", "přepočet záběrů na měsíc (I)", "přepočet záběrů na jednotlivé linky (I)", "přepočet záběrů na jednotlivé zastávky (I)", "přepočet dnů na zastávky (I)", "přepočet záběrů na podtyp dopravních prostředků (II)", "přepočet linek na zastávku na základě klipů (II)", "přepočet linek na podtyp dopravních prostředků (III)" };
             return names[index];
         }
 
-        public static Statistics[] load_statistics()
-        {
-            List<Statistics> list = new List<Statistics>();
-            for (int i = 0; i < list_of_statistics().Length; i++)
-            {
-                list.Add(new Statistics(i));
-            }
-            return list.ToArray();
-        }
-
-        public static List<string[]> datagridview_convert(DataGridView data) 
-        {
-            string[]array = new string[data.ColumnCount];
-            List<string[]> list = new List<string[]>();
-            foreach (DataGridViewRow row in data.Rows)
-            {
-                for (int i = 0; i < data.ColumnCount; i++)
-                {
-                    if (!(data.Columns[i].HeaderText.ToString().Equals("id")))
-                    {
-                        array[i] = row.Cells[i].Value?.ToString();
-                    }
-                }   
-                list.Add(array);
-                Array.Clear(array);
-            }
-            return list;
-        }
-
+        /// <summary>
+        /// load selected field in singpost
+        /// </summary>
+        /// <param name="a">directory</param>
+        /// <param name="b">field</param>
+        /// <returns>selected function</returns>
         public static Form load_tree_view(int a, int b)
         {
             switch (a, b)
@@ -137,33 +120,39 @@ namespace evidence_clip_about_public_transport.Other_classes
                 case (1, 5):
                     return new Show_subtype();
                     break;
+                
 
                 case (2, 0):
-                    return new Statistics(b);
-                    break;
+                    return new Complete_overview();
+                break;
+
 
                 case (2, 1):
                     return new Statistics(b);
                     break;
 
                 case (2, 2):
-
                     return new Statistics(b);
                     break;
+
                 case (2, 3):
+
                     return new Statistics(b);
                     break;
                 case (2, 4):
                     return new Statistics(b);
                     break;
-
                 case (2, 5):
                     return new Statistics(b);
                     break;
+
                 case (2, 6):
                     return new Statistics(b);
                     break;
                 case (2, 7):
+                    return new Statistics(b);
+                    break;
+                case (2, 8):
                     return new Statistics(b);
                     break;
 
@@ -180,7 +169,11 @@ namespace evidence_clip_about_public_transport.Other_classes
             }
 
         }
-
+        /// <summary>
+        /// load tree view
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static Form load_tree_view(int a)
         {
             switch (a)
@@ -200,6 +193,11 @@ namespace evidence_clip_about_public_transport.Other_classes
 
         }
 
+        /// <summary>
+        /// convert header of table to czech language
+        /// </summary>
+        /// <param name="index">index</param>
+        /// <returns>headers in czech</returns>
         public static string[] set_header_in_czech(int index)
         {
             List<string[]> headers_in_czech = new List<string[]>();
@@ -253,30 +251,15 @@ namespace evidence_clip_about_public_transport.Other_classes
 
         }
 
+        /// <summary>
+        /// load selected color from dialog
+        /// </summary>
+        /// <returns>color in HEX value</returns>
         public static string color_()
         {
             ColorDialog dialog = new ColorDialog();
             dialog.ShowDialog();
             return (dialog.Color.ToArgb() & 0x00FFFFFF).ToString("X6");
-        }
-
-        public static decimal recalculation_to_inch(int unit)
-        {
-            switch (unit) 
-            {
-                case 0:
-                    return 2.54m;
-                break;
-
-                case 1:
-                    return 20.54m;
-                break;
-
-                case 2:
-                    return 1;
-                break;
-            }
-            return 1;
         }
     }
 }

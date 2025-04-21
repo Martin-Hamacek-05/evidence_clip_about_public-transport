@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_export_mngr
 {
+    /// <summary>
+    /// Convert selected data to tsv file
+    /// </summary>
     public class Export_to_tsv : I_Export_file
     {
         public string export_file(DataGridView data, string path, string header, params string[] hide_columns)

@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Other_classes.Load_backup
 {
+    /// <summary>
+    /// export data from file to table Mean_of_transport
+    /// </summary>
     public class Load_mean_of_transport : I_Load_to_database
     {
         public string load_database(string path)

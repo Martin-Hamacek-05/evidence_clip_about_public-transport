@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Other_classes.Load_backup
 {
+    /// <summary>
+    /// Fill list of tables for load to backup
+    /// </summary>
     public class Load_fill_list
     {
         public static List<I_Load_to_database> fill() 

@@ -9,9 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using evidence_clip_about_public_transport.exceptions;
-
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.DAO.mysql.for_author
 {
+
+    /// <summary>
+    /// This class is implent of interface I_DAO_Author for MySQL server
+    /// </summary>
     public class DAO_Author_implement : I_DAO_Author
     {
         public void delete_author(int id)

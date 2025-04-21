@@ -8,7 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -68,7 +68,6 @@ namespace evidence_clip_about_public_transport.DAO
         /// </summary>
         /// <param name="stops">list of stops</param>
         /// <returns>is loaded</returns>
-
         public string load_file(List<Stop_> stops);
 
 

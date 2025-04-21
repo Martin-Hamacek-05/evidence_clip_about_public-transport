@@ -4,9 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Work_with_ftp
 {
+    /// <summary>
+    /// For better load login info for FTP Server
+    /// </summary>
     public class ftp_connection_object
     {
         private string server;

@@ -4,9 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Entits
 {
+    /// <summary>
+    /// Reprezentation of database entity: Author
+    /// </summary>
     public class Author:I_Work_with_Csv
     {
         private int id;
@@ -18,10 +21,26 @@ namespace evidence_clip_about_public_transport.Entits
         private int count_of_access;
         private string user_password;
 
+        /// <summary>
+        /// for create emtpy istance
+        /// </summary>
         public Author() 
         { 
         
         }
+
+        /// <summary>
+        /// create new istance of author
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="login_name"></param>
+        /// <param name="is_admin"></param>
+        /// <param name="message"></param>
+        /// <param name="email"></param>
+        /// <param name="date_create"></param>
+        /// <param name="count_of_access"></param>
+        /// <param name="user_password"></param>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public Author(int id, string login_name, bool is_admin, string message, string email, DateOnly date_create, int count_of_access, string user_password)
         {
             if (login_name == null) 
@@ -64,15 +83,47 @@ namespace evidence_clip_about_public_transport.Entits
             this.User_password = user_password;
         }
 
+        /// <summary>
+        /// set get ID
+        /// </summary>
         public int Id { get => id; set => id = value; }
+
+        /// <summary>
+        /// set get Login name
+        /// </summary>
         public string Login_name { get => login_name; set => login_name = value; }
+
+        /// <summary>
+        /// set get Is Admin
+        /// </summary>
         public bool Is_admin { get => is_admin; set => is_admin = value; }
+
+        /// <summary>
+        /// set get Message
+        /// </summary>
         public string Message { get => message; set => message = value; }
+
+        /// <summary>
+        /// set get Email
+        /// </summary>
         public string Email { get => email; set => email = value; }
+
+        /// <summary>
+        /// set get Date create
+        /// </summary>
         public DateOnly Date_create { get => date_create; set => date_create = value; }
+
+        /// <summary>
+        /// set get Count of access
+        /// </summary>
         public int Count_of_access { get => count_of_access; set => count_of_access = value; }
+
+        /// <summary>
+        /// set get User password
+        /// </summary>
         public string User_password { get => user_password; set => user_password = value; }
 
+        
         public object from_csv(string row)
         {
             row = row.Trim();

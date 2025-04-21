@@ -10,11 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using evidence_clip_about_public_transport.exceptions;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.DAO.mysql.for_formats
 {
     /// <summary>
-    /// This class is implent of interface I_DAO_Formats
+    /// This class is implent of interface I_DAO_Formats for MySQL server
     /// </summary>
     public class DAO_Formats_implement : I_DAO_Formats
     {

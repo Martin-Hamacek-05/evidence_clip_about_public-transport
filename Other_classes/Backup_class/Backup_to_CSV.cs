@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Other_classes.Backup_class
 {
     /// <summary>
@@ -27,6 +27,11 @@ namespace evidence_clip_about_public_transport.Other_classes.Backup_class
     /// </summary>
     public class Backup_to_CSV : I_Backup
     {
+        /// <summary>
+        /// export backup to file
+        /// </summary>
+        /// <param name="directopy_for_backup"></param>
+        /// <returns>stave</returns>
         public string export_data(string directopy_for_backup)
         {
             I_DAO_Line dAO_Line_Implement = Database_server_switch.dAO_Line();
@@ -57,16 +62,18 @@ namespace evidence_clip_about_public_transport.Other_classes.Backup_class
             save_to_file(new List<I_Work_with_Csv>(i_DAO_Mean_Of_Transport.get_all_for_backup().ToArray()), directopy_for_backup, "_mean_of_transport_.csv");
             save_to_file(new List<I_Work_with_Csv>(i_DAO_Subtype_Mean_Of_Transport.get_all_for_backup().ToArray()), directopy_for_backup, "_subtype_mean_of_transport_.csv");
 
-            //Clip clip = new Clip();
-            //MessageBox.Show(clip.from_csv("").ToString());
-
             return "hotovo";
         }
 
+        /// <summary>
+        /// save to file
+        /// </summary>
+        /// <param name="i_Work_With_Csv"></param>
+        /// <param name="directopy_for_backup"></param>
+        /// <param name="file_name"></param>
         public static void save_to_file(List<I_Work_with_Csv> i_Work_With_Csv,string directopy_for_backup,string file_name) 
         {
-            //Thread thread = new Thread(() =>
-            //{
+            
                 string data = "";
 
                 foreach (I_Work_with_Csv i_Work_With_ in i_Work_With_Csv)
@@ -75,10 +82,7 @@ namespace evidence_clip_about_public_transport.Other_classes.Backup_class
                 }
 
                 File_manager.export_to_csv(directopy_for_backup + file_name, data);
-            //});
-
-            /*thread.Start();
-            thread.Join();*/
+           
         }
     }
 }

@@ -9,9 +9,12 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.DAO.mysql.for_subtype_mean_of_transport
 {
+    /// <summary>
+    /// This class is implent of interface I_DAO_Subtype_mean_of_transport for MySQL server
+    /// </summary>
     public class DAO_Subtype_mean_of_transport_implement : I_DAO_Subtype_mean_of_transport
     {
 

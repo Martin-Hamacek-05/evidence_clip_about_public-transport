@@ -15,20 +15,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO.mysql.other_features
 {
     /// <summary>
-    /// specific features for work with database
+    /// specific features for work with database for MySQL server
     /// </summary>
     public class Other_database_features : I_Other_database_features
     {
 
-        /// <summary>
-        /// Generate string about list of vehicle on selected clip
-        /// </summary>
-        /// <param name="id">selected clip</param>
-        /// <returns>string</returns>
+        
         public string vehicles_on_clip(int id)
         {
             try
@@ -59,11 +55,7 @@ namespace evidence_clip_about_public_transport.DAO.mysql.other_features
                 return "Došlo k neočekavané chybě:\n" + exc.Message;
             }
         }
-        /// <summary>
-        /// Set list of patterns of vehicle on selected vehicle
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="patterns"></param>
+        
         public void patterns_on_vehicle(int id, ListBox patterns)
         {
             try
@@ -92,10 +84,7 @@ namespace evidence_clip_about_public_transport.DAO.mysql.other_features
                 MessageBox.Show("Došlo k neočekavané chybě:\n" + exc.Message);
             }
         }
-        /// <summary>
-        /// Set filter propeties
-        /// </summary>
-        /// <returns>List of CheckedListBox</returns>
+        
         public List<CheckedListBox> parameters_for_filter()
         {
             List<CheckedListBox> all_parameters = new List<CheckedListBox>();
@@ -125,12 +114,7 @@ namespace evidence_clip_about_public_transport.DAO.mysql.other_features
 
             return all_parameters;
         }
-        /// <summary>
-        /// Load of stored prodecure, witch have a parameter year
-        /// </summary>
-        /// <param name="name_of_procedure"></param>
-        /// <param name="year"></param>
-        /// <returns>table</returns>
+        
         public DataSet load_stored_procedure(string name_of_procedure, string year)
         {
             try

@@ -88,6 +88,9 @@
     <Compile Update="Win_forms_user_interface\other\Backup_import.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Win_forms_user_interface\other\Complete_overview.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Win_forms_user_interface\other\Database_set_connection.cs">
       <SubType>Form</SubType>
     </Compile>

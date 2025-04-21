@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -48,8 +48,17 @@ namespace evidence_clip_about_public_transport.DAO
         /// <returns>is inserted</returns>
         public string new_mean_of_transport(Mean_of_transport mean_of_transport);
 
+        /// <summary>
+        /// Generate backup from table Mean_of_transport
+        /// </summary>
+        /// <returns>list of Means_of_transport</returns>
         public List<Mean_of_transport> get_all_for_backup();
 
+        /// <summary>
+        /// Load backup of Mean of transport
+        /// </summary>
+        /// <param name="lines">list for recovery</param>
+        /// <returns>stave</returns>
         public string load_file(List<Mean_of_transport> lines);
     }
 }

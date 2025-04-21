@@ -5,9 +5,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.Work_with_ftp
 {
+    /// <summary>
+    /// Class for convert config file to FTP login object
+    /// </summary>
     public class ftp_connection
     {
         public static ftp_connection_object ftp_connect()

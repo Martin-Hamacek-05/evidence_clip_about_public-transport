@@ -8,7 +8,7 @@ using System.Xml;
 using evidence_clip_about_public_transport.Entits;
 using evidence_clip_about_public_transport.DAO;
 
-/* author Martin Hamacek, C4c, 2024/2025*/
+/* author Martin Hamacek*/
 namespace evidence_clip_about_public_transport.Other_classes.Backup_class
 {
     /// <summary>

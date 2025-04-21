@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek*/
 namespace evidence_clip_about_public_transport.DAO
 {
     /// <summary>
@@ -48,7 +48,17 @@ namespace evidence_clip_about_public_transport.DAO
         /// <returns>checklist of producer</returns>
         public CheckedListBox get_distict_producers();
 
+        /// <summary>
+        /// Generate backup of table Producer
+        /// </summary>
+        /// <returns>list of Producer</returns>
         public List<Producer> get_all_for_backup();
+
+        /// <summary>
+        /// Load backup of Producer
+        /// </summary>
+        /// <param name="list">list of Producer</param>
+        /// <returns>stave</returns>
         public string load_file(List<Producer> list);
     }
 }

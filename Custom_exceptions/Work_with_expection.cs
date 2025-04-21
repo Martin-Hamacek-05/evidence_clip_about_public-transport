@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/* author: Martin Hamacek, C4c, 2024/2025 */
+/* author: Martin Hamacek */
 namespace evidence_clip_about_public_transport.exceptions
 {
+    /// <summary>
+    /// Is used for better show errors
+    /// </summary>
     public class Work_with_expection
     {
+        /// <summary>
+        /// label for error
+        /// </summary>
         private static string error = "chyba ";
+
+        /// <summary>
+        /// type of show dialog
+        /// </summary>
         private static MessageBoxButtons ok_buttons = MessageBoxButtons.OK;
+
+        /// <summary>
+        /// icon of show dialog
+        /// </summary>
         private static MessageBoxIcon icon = MessageBoxIcon.Error;
 
         /// <summary>
-        ///This class is desined for better info about error
+        /// This class is desined for better info about error
         /// </summary>
         /// <param name="number_of_code">number of code</param>
         public static void sql_exception_of_code(int number_of_code) 

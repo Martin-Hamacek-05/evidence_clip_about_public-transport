@@ -19,15 +19,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.DAO
 {
+    /// <summary>
+    /// Swither between other database systems (currently support only MySQL server)
+    /// </summary>
     public class Database_server_switch
     {
+        /// <summary>
+        /// Type of server 
+        /// </summary>
         private int stave;
 
+        /// <summary>
+        /// set and get stave
+        /// </summary>
         public int Stave { get => stave; set => stave = value; }
 
+        /// <summary>
+        /// Load set stave in file
+        /// </summary>
+        /// <returns>id of system</returns>
         public static int stave_from_file()
         {
 
@@ -39,6 +52,10 @@ namespace evidence_clip_about_public_transport.DAO
             return Int32.Parse(type_of_database[0].InnerText);
         }
 
+        /// <summary>
+        /// Switcher for table clip
+        /// </summary>
+        /// <returns>selected server for table clip</returns>
         public static I_DAO_Clip dAO_Clips()
         {
             try
@@ -54,6 +71,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table formats
+        /// </summary>
+        /// <returns>selected server for table formats</returns>
         public static I_DAO_Formats dAO_Formats()
         {
             try
@@ -70,6 +91,10 @@ namespace evidence_clip_about_public_transport.DAO
 
         }
 
+        /// <summary>
+        /// Switcher for table line
+        /// </summary>
+        /// <returns>selected server for table line</returns>
         public static I_DAO_Line dAO_Line()
         {
             try
@@ -86,6 +111,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Mean_Of_Transport
+        /// </summary>
+        /// <returns>selected server for table Mean_Of_Transport</returns>
         public static I_DAO_Mean_of_transport dAO_Mean_Of_Transport()
         {
             try { 
@@ -100,6 +129,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Owner_
+        /// </summary>
+        /// <returns>selected server for table Owner_</returns>
         public static I_DAO_Owner dAO_owner()
         {
             try
@@ -116,6 +149,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Pattern
+        /// </summary>
+        /// <returns>selected server for table Pattern</returns>
         public static I_DAO_Pattern dAO_pattern()
         {
             try
@@ -132,6 +169,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Pattern_on_vehicle
+        /// </summary>
+        /// <returns>selected server for table Pattern_on_vehicle</returns>
         public static I_DAO_Pattern_on_vehicle dAO_Pattern_On_Vehicle()
         {
             try { 
@@ -147,14 +188,17 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Producer
+        /// </summary>
+        /// <returns>selected server for table Producer</returns>
         public static I_DAO_Producer dAO_producer()
         {
             try
             {
                 List<I_DAO_Producer> dAO_Formats = new List<I_DAO_Producer>();
-            dAO_Formats.Add(new DAO_Producer_implement());
-            
-            return dAO_Formats[stave_from_file()];
+                dAO_Formats.Add(new DAO_Producer_implement());
+                return dAO_Formats[stave_from_file()];
             }
             catch (IndexOutOfRangeException exc)
             {
@@ -163,6 +207,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Producer
+        /// </summary>
+        /// <returns>selected server for table Stop</returns>
         public static I_DAO_Stop dAO_stop()
         {
             try
@@ -179,6 +227,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Subtype_mean_of_transport 
+        /// </summary>
+        /// <returns>selected server for table Subtype_mean_of_transport</returns>
         public static I_DAO_Subtype_mean_of_transport dAO_Subtype_Mean_Of_Transport()
         {
             try
@@ -195,6 +247,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Vehicle 
+        /// </summary>
+        /// <returns>selected server for table Vehicle</returns>
         public static I_DAO_Vehicle dAO_Vehicle()
         {
             try
@@ -211,6 +267,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Vehicles_on_clip 
+        /// </summary>
+        /// <returns>selected server for table Vehicles_on_clip</returns>
         public static I_DAO_Vehicles_on_clip DAO_Vehicles_On_Clip()
         {
             try
@@ -227,6 +287,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for table Author 
+        /// </summary>
+        /// <returns>selected server for table Author</returns>
         public static I_DAO_Author DAO_Author()
         {
             try
@@ -243,6 +307,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for list_to_combobox
+        /// </summary>
+        /// <returns>selected server for list_to_combobox</returns>
         public static I_List_to_combobox list_to_combobox()
         {
             try
@@ -260,6 +328,10 @@ namespace evidence_clip_about_public_transport.DAO
             }
         }
 
+        /// <summary>
+        /// Switcher for other_Database_Features 
+        /// </summary>
+        /// <returns>selected server for other_Database_Features</returns>
         public static I_Other_database_features other_Database_Features()
         {
             try
@@ -275,5 +347,6 @@ namespace evidence_clip_about_public_transport.DAO
                 return new Other_database_features();
             }
         }
+
     }
 }

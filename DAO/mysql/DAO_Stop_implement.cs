@@ -11,9 +11,13 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using evidence_clip_about_public_transport.exceptions;
-
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.DAO.mysql.for_stop
 {
+
+    /// <summary>
+    /// This class is implent of interface I_DAO_Stop for MySQL server
+    /// </summary>
     public class DAO_Stop_implement : I_DAO_Stop
     {
 

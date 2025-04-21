@@ -315,6 +315,7 @@
             width_label.Size = new Size(31, 15);
             width_label.TabIndex = 25;
             width_label.Text = "šířka";
+            width_label.Visible = false;
             // 
             // height_label
             // 
@@ -325,6 +326,7 @@
             height_label.Size = new Size(36, 15);
             height_label.TabIndex = 26;
             height_label.Text = "výška";
+            height_label.Visible = false;
             // 
             // width_page
             // 
@@ -335,6 +337,7 @@
             width_page.Name = "width_page";
             width_page.Size = new Size(128, 23);
             width_page.TabIndex = 27;
+            width_page.Visible = false;
             // 
             // height_page
             // 
@@ -345,6 +348,7 @@
             height_page.Name = "height_page";
             height_page.Size = new Size(128, 23);
             height_page.TabIndex = 28;
+            height_page.Visible = false;
             // 
             // units
             // 
@@ -356,6 +360,7 @@
             units.Name = "units";
             units.Size = new Size(77, 23);
             units.TabIndex = 31;
+            units.Visible = false;
             // 
             // Styles_for_html
             // 
@@ -396,7 +401,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Styles_for_html";
-            Text = "Stylopis";
+            Text = "Stylopis pro HTML soubory";
             ((System.ComponentModel.ISupportInitialize)size_of_font).EndInit();
             ((System.ComponentModel.ISupportInitialize)border_of_cell).EndInit();
             ((System.ComponentModel.ISupportInitialize)width_page).EndInit();

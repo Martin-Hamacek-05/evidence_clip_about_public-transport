@@ -31,9 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Show_clips));
             menu_trip_on_top = new MenuStrip();
             file_button_on_top_menu_trip = new ToolStripMenuItem();
+            load_data = new ToolStripMenuItem();
             save_as_button_on_top_menu_trip = new ToolStripMenuItem();
             toolstrip_for_work_with_table = new ToolStrip();
             new_record = new ToolStripButton();
+            show_selected_record = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             show_from_year_label = new ToolStripLabel();
             from_year_combo_box = new ToolStripComboBox();
@@ -47,7 +49,6 @@
             status_strip = new StatusStrip();
             status_label = new ToolStripStatusLabel();
             data_from_select = new DataGridView();
-            load_data = new ToolStripMenuItem();
             menu_trip_on_top.SuspendLayout();
             toolstrip_for_work_with_table.SuspendLayout();
             status_strip.SuspendLayout();
@@ -72,17 +73,24 @@
             file_button_on_top_menu_trip.Size = new Size(57, 22);
             file_button_on_top_menu_trip.Text = "Soubor";
             // 
+            // load_data
+            // 
+            load_data.Name = "load_data";
+            load_data.Size = new Size(130, 22);
+            load_data.Text = "Import dat";
+            load_data.Click += load_data_Click;
+            // 
             // save_as_button_on_top_menu_trip
             // 
             save_as_button_on_top_menu_trip.Name = "save_as_button_on_top_menu_trip";
-            save_as_button_on_top_menu_trip.Size = new Size(180, 22);
+            save_as_button_on_top_menu_trip.Size = new Size(130, 22);
             save_as_button_on_top_menu_trip.Text = "Uložit jako";
             save_as_button_on_top_menu_trip.Click += save_as_button_on_top_menu_trip_Click;
             // 
             // toolstrip_for_work_with_table
             // 
             toolstrip_for_work_with_table.ImageScalingSize = new Size(24, 24);
-            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { new_record, toolStripSeparator1, show_from_year_label, from_year_combo_box, load_button, toolStripSeparator2, search_with_clip_name_label, search_clip_textbox, search_button, toolStripSeparator3, header });
+            toolstrip_for_work_with_table.Items.AddRange(new ToolStripItem[] { new_record, show_selected_record, toolStripSeparator1, show_from_year_label, from_year_combo_box, load_button, toolStripSeparator2, search_with_clip_name_label, search_clip_textbox, search_button, toolStripSeparator3, header });
             toolstrip_for_work_with_table.Location = new Point(0, 24);
             toolstrip_for_work_with_table.Name = "toolstrip_for_work_with_table";
             toolstrip_for_work_with_table.Size = new Size(880, 25);
@@ -97,6 +105,17 @@
             new_record.Size = new Size(85, 22);
             new_record.Text = "Přidat záznam";
             new_record.Click += new_record_Click;
+            // 
+            // show_selected_record
+            // 
+            show_selected_record.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            show_selected_record.Enabled = false;
+            show_selected_record.Image = (Image)resources.GetObject("show_selected_record.Image");
+            show_selected_record.ImageTransparentColor = Color.Magenta;
+            show_selected_record.Name = "show_selected_record";
+            show_selected_record.Size = new Size(122, 22);
+            show_selected_record.Text = "Zobrazit podrobnosti";
+            show_selected_record.Click += show_selected_record_Click;
             // 
             // toolStripSeparator1
             // 
@@ -181,6 +200,7 @@
             // 
             data_from_select.AllowUserToAddRows = false;
             data_from_select.AllowUserToDeleteRows = false;
+            data_from_select.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             data_from_select.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             data_from_select.Dock = DockStyle.Fill;
             data_from_select.Location = new Point(0, 49);
@@ -190,13 +210,6 @@
             data_from_select.Size = new Size(880, 304);
             data_from_select.TabIndex = 3;
             data_from_select.CellClick += data_from_select_CellClick;
-            // 
-            // load_data
-            // 
-            load_data.Name = "load_data";
-            load_data.Size = new Size(180, 22);
-            load_data.Text = "Import dat";
-            load_data.Click += load_data_Click;
             // 
             // Show_clips
             // 
@@ -245,5 +258,6 @@
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripTextBox header;
         private ToolStripMenuItem load_data;
+        private ToolStripButton show_selected_record;
     }
 }

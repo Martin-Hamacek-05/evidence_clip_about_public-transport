@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+//Author: Martin Hamacek
 namespace evidence_clip_about_public_transport.File_export_mngr
 {
+    /// <summary>
+    /// Convert selected data to markdown file
+    /// </summary>
     public class Export_to_markdown : I_Export_file
     {
         private static readonly char blockquote = '"';
