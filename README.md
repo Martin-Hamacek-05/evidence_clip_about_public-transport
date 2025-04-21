@@ -5,9 +5,6 @@ autor: Martin Hamacek
 ## učel aplikace: 
 Desktop aplikace na evidenci záběrů dopravních prostředků MHD. 
 
-## architektura programu
-- package diagram
-
 ## použité technologie
 
 - [Winforms C# (.net 8.0)](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netdesktop-8.0) – tvorba uživatelského rozhraní desktopové aplikace v jazyce C#
@@ -38,6 +35,7 @@ viz. další odkazy
 |-|-|
 |9. 4. 2025|Nová verze dokumentace|
 |10. 4. 2025|Úprava - použité technologie, doplnění jak zprovoznit, doplnění odkazů|
+|21.4.2025|Další úpravy|
 
 ## kontakt
 @ - hamacekmar@gmail.com
