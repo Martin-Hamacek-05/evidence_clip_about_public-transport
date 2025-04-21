@@ -21,10 +21,11 @@ Desktop aplikace na evidenci záběrů dopravních prostředků MHD.
 
 ### build programu
 
-1. nahrajde databázi na MySQL server [postup](https://github.com/Martin-Hamacek-05/mysql_ev_clip_about_p_transport)
+1. nahrajde databázi na MySQL server [postup](https://github.com/Martin-Hamacek-05/mysql_ev_clip_about_p_transport) pomocí MySQL Workbench a po nahrání struktury přes MySQL workbench proveďte: 
+```INSERT INTO AUTHOR (login_name,is_admin,message,email,date_created,count_of_access,user_password) VALUES (“Admin”,1,“text“,“example@example“,“2024-01-02“,1,“Heslo321123“);```
 2. spustě .exe soubor, který se nachází v bin/Debug/net8.0-windows
 3. po spuštění klikněte na tlačítko připojení do databáze, a zadejte všechny potřebné údaje
-4. přihlašte se uživatelské jméno `admin` heslo: `Heslo321123` - pro přihlášení změnte heslo
+4. přihlaste se uživatelské jméno `admin` heslo: `Heslo321123` - pro přihlášení změňte heslo
 
 ## Databáze
 
