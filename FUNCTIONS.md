@@ -1,1 +1,1 @@
-#Funkce programu
+# Funkce programu
