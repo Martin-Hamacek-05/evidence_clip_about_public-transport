@@ -1,0 +1,47 @@
+# Evidence záběrů o MHD - desktop aplikace
+
+autor: Martin Hamacek
+
+## učel aplikace: 
+Desktop aplikace na evidenci záběrů dopravních prostředků MHD. 
+
+## použité technologie
+
+- [Winforms C# (.net 8.0)](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netdesktop-8.0) – tvorba uživatelského rozhraní desktopové aplikace v jazyce C#
+- [MySQL.data.Connection (v 9.1.0)](https://www.nuget.org/packages/MySql.Data/9.1.0#show-readme-container) – práce s MySQL databázi 
+- [ScottPlot (v 5.0.47)](https://scottplot.net/) - vytváření grafů na desktop aplikaci
+- [DocumentFormat.OpenXml (v 3.3.0)](https://www.nuget.org/packages/documentformat.openxml) - načítání dat z .xlsx souboru
+
+## jak zprovoznit
+
+### zdrojové kódy
+1. stáhněte si tento repozitář
+2. vytvořte projekt ve Visual Studiu
+3. nainstalujte potřebné NuGets (seznam použitých technologií)
+
+### build programu
+
+1. nahrajde databázi na MySQL server [postup](https://github.com/Martin-Hamacek-05/mysql_ev_clip_about_p_transport) pomocí MySQL Workbench a po nahrání struktury přes MySQL workbench proveďte: 
+```INSERT INTO AUTHOR (login_name,is_admin,message,email,date_created,count_of_access,user_password) VALUES (“Admin”,1,“text“,“example@example“,“2024-01-02“,1,“Heslo321123“);```
+2. spustě .exe soubor, který se nachází v bin/Debug/net8.0-windows
+3. po spuštění klikněte na tlačítko připojení do databáze, a zadejte všechny potřebné údaje
+4. přihlaste se uživatelské jméno `admin` heslo: `Heslo321123` - pro přihlášení změňte heslo
+
+## Databáze
+
+viz. další odkazy
+
+## záznamy o změnách v dokumentaci
+|datum|změna|
+|-|-|
+|9. 4. 2025|Nová verze dokumentace|
+|10. 4. 2025|Úprava - použité technologie, doplnění jak zprovoznit, doplnění odkazů|
+|21.4.2025|Další úpravy|
+
+## kontakt
+@ - hamacekmar@gmail.com
+
+## další odkazy
+[Evidence záběrů o MHD - schéma databáze pro MySQL server](https://github.com/Martin-Hamacek-05/mysql_ev_clip_about_p_transport)
+
+[Evidence záběrů o MHD - webové rozhraní]()
