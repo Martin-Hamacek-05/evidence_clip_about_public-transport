@@ -35,7 +35,8 @@ viz. další odkazy
 |-|-|
 |9. 4. 2025|Nová verze dokumentace|
 |10. 4. 2025|Úprava - použité technologie, doplnění jak zprovoznit, doplnění odkazů|
-|21.4.2025|Další úpravy|
+|21. 4. 2025|Další úpravy|
+|22. 4. 2025|Oprava odkazů|
 
 ## kontakt
 @ - hamacekmar@gmail.com
@@ -43,4 +44,4 @@ viz. další odkazy
 ## další odkazy
 [Evidence záběrů o MHD - schéma databáze pro MySQL server](https://github.com/Martin-Hamacek-05/mysql_ev_clip_about_p_transport)
 
-[Evidence záběrů o MHD - webové rozhraní]()
+[Evidence záběrů o MHD - webové rozhraní](https://github.com/Martin-Hamacek-05/web_app_ev_clip_about_p_transport)
