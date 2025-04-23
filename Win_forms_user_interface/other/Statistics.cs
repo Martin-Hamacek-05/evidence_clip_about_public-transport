@@ -61,6 +61,9 @@ namespace evidence_clip_about_public_transport.Win_forms_user_interface.other
                 splitcontainer.Panel2Collapsed = false;
 
                 chart_List.set_chart(type_chart.SelectedIndex, FormsPlot1, data_from_select, Other_features.name_of_statistics(statistic_id));
+                    
+              
+
                 status_label.Text = "OK | Počet nalezených záznamů: " + data_from_select.Rows.Count.ToString();
 
             }

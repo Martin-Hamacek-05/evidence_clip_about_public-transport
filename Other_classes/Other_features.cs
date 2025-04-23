@@ -1,4 +1,5 @@
-﻿using evidence_clip_about_public_transport.Win_forms_user_interface.for_formats;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using evidence_clip_about_public_transport.Win_forms_user_interface.for_formats;
 using evidence_clip_about_public_transport.Win_forms_user_interface.for_lines;
 using evidence_clip_about_public_transport.Win_forms_user_interface.for_mean_of_transport;
 using evidence_clip_about_public_transport.Win_forms_user_interface.for_owner;
@@ -51,7 +52,7 @@ namespace evidence_clip_about_public_transport.Other_classes
 
         public static TreeNode[] list_of_statistics()
         {
-            TreeNode[] list = new TreeNode[8];
+            TreeNode[] list = new TreeNode[9];
             for (int i = 0; i < list.Length; i++)
             {
                 list[i] = new TreeNode(name_of_statistics(i), 4, 4);
@@ -142,6 +143,7 @@ namespace evidence_clip_about_public_transport.Other_classes
                 case (2, 4):
                     return new Statistics(b);
                     break;
+
                 case (2, 5):
                     return new Statistics(b);
                     break;
@@ -152,6 +154,7 @@ namespace evidence_clip_about_public_transport.Other_classes
                 case (2, 7):
                     return new Statistics(b);
                     break;
+
                 case (2, 8):
                     return new Statistics(b);
                     break;
@@ -224,7 +227,7 @@ namespace evidence_clip_about_public_transport.Other_classes
                     break;
 
                 case 2:
-                    return headers_in_czech[1];
+                    return headers_in_czech[0];
                     break;
 
                 case 3:
@@ -235,14 +238,20 @@ namespace evidence_clip_about_public_transport.Other_classes
                     return headers_in_czech[1];
                     break;
                 case 5:
-                    return headers_in_czech[2];
+                    return headers_in_czech[1];
                     break;
                 case 6:
-                    return headers_in_czech[4];
+                    return headers_in_czech[2];
                     break;
                 case 7:
+                    return headers_in_czech[4];
+                    break;
+
+                case 8:
                     return headers_in_czech[3];
                     break;
+                    break;
+
                 default:
                     return headers_in_czech[0];
                     break;
